@@ -1,0 +1,9 @@
+{
+  "name": "lazyline",
+  "version": "1.4.1",
+  "main": "jquery.lazylinepainter-1.4.1.js",
+  "ignore": [
+    "eve",
+    "**/.*"
+  ]
+}
