@@ -1,7 +1,7 @@
 <h1>B.A.W.D</h1>
 <p>This is my personal website feel free to use distribute as you see fit</p>
+<p>version: 0.0.1 </p> 
 <h2>Dependencies:</h2>
-version: 0.0.1
 <h3>dependencies:</h3> 
 <ul>
 	<li>angular: 1.2.6,</li>
