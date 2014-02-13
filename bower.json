@@ -1,6 +1,6 @@
 {
   "name": "bawd",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "dependencies": {
     "angular": "1.2.6",
     "json3": "~3.2.6",
@@ -10,8 +10,8 @@
     "angular-sanitize": "1.2.6",
     "angular-route": "1.2.6",
     "angular-animate": "1.2.11",
-    "raphael-master": "2.1",
-    "lazy-line-painter-master": "1.4.1"
+    "lazy-line-painter": "https://github.com/camoconnell/lazy-line-painter.git#~1.4.1",
+    "raphael": "https://github.com/DmitryBaranovskiy/raphael.git#~2.1.2"
   },
   "devDependencies": {
     "angular-mocks": "1.2.6",

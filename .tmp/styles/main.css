@@ -1,0 +1,842 @@
+html,
+body,
+div,
+span,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+abbr,
+address,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+samp,
+small,
+strong,
+sub,
+sup,
+var,
+b,
+i,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+}
+
+body {
+  line-height: 1;
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+
+nav ul {
+  list-style: none;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: '';
+  content: none;
+}
+
+a {
+  margin: 0;
+  padding: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+}
+
+/* change colours to suit your needs */
+
+ins {
+  background-color: #ff9;
+  color: #000;
+  text-decoration: none;
+}
+
+/* change colours to suit your needs */
+
+mark {
+  background-color: #ff9;
+  color: #000;
+  font-style: italic;
+  font-weight: bold;
+}
+
+del {
+  text-decoration: line-through;
+}
+
+abbr[title],
+dfn[title] {
+  border-bottom: 1px dotted;
+  cursor: help;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* change border colour to suit your needs */
+
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #cccccc;
+  margin: 1em 0;
+  padding: 0;
+}
+
+input,
+select {
+  vertical-align: middle;
+}
+
+/*END REST*/
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+}
+
+* {
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-weight: 300;
+  color: #666666;
+  /*  -webkit-transition: 0.8s linear all;
+  -moz-transition: 0.8s linear all;
+  -ms-transition: 0.8s linear all;
+  -o-transition: 0.8s linear all;
+  transition: 0.8s linear all;*/
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+
+p {
+  text-align: center;
+}
+
+*:focus {
+  outline: none;
+}
+
+.right_side {
+  position: absolute;
+  -webkit-transform: rotate(-90deg);
+  transform: rotate(-90deg);
+  z-index: 100;
+  width: 100%;
+  top: 50%;
+  top: calc(50% + 10px);
+  height: auto;
+  right: 50%;
+  right: calc(-50% + 20px);
+}
+
+.right_side p {
+  left: 0;
+  position: relative;
+  margin: 0;
+  font-weight: 200;
+}
+
+.blue {
+  background-color: #2cd7ff;
+}
+
+.green {
+  background-color: green;
+}
+
+.red {
+  background-color: red;
+}
+
+.black {
+  background-color: black;
+}
+
+.pantone {
+  position: relative;
+  margin: auto;
+  width: 200px;
+  margin: auto;
+}
+
+.pantone_wrap_outer {
+  position: relative;
+  width: 400px;
+  padding: 1px;
+  cursor: pointer;
+}
+
+.pantonebg {
+  position: fixed;
+  border: 0px solid white;
+  width: 98%;
+  width: calc(100% - 20px);
+  height: 98%;
+  height: calc(100% - 20px);
+}
+
+.pantone_wrap_inner {
+  position: relative;
+  padding: 40px;
+  margin: 40px;
+  border: 2px solid white;
+}
+
+.top_left_logo {
+  position: relative;
+}
+
+.top_left_logo img {
+  position: fixed;
+  top: 50px;
+  left: 50px;
+}
+
+.top_left_logo.white img {
+  position: absolute;
+  top: 24px;
+  left: 40px;
+}
+
+.page_cont_wrap {
+  width: 100%;
+  width: calc(100% - 20px);
+  height: 100%;
+  height: calc(100% - 20px);
+}
+
+.container {
+  height: 100%;
+}
+
+.page_container {
+  height: 98%;
+  overflow: hidden;
+}
+
+#animacion {
+  position: absolute;
+  left: 20%;
+  top: 20%;
+}
+
+#fase1 {
+  position: fixed;
+  top: 5%;
+  left: 32%;
+  margin: auto;
+  min-height: 768px;
+  max-width: 571px;
+  min-width: 571px;
+  display: block;
+}
+
+#fase2 {
+  position: absolute;
+}
+
+#fase4 {
+  position: absolute;
+}
+
+#fase3 {
+  position: absolute;
+}
+
+.slide.ng-enter,
+.slide.ng-leave {
+  transition: 0.8s linear all;
+}
+
+.slide.ng-enter {
+  right: 3000px;
+  position: absolute;
+  width: 100%;
+}
+
+/* starting animations for enter */
+
+.slide.ng-enter-active {
+  right: 0px;
+  position: absolute;
+  width: 100%;
+}
+
+/* terminal animations for enter */
+
+.slide.ng-leave {
+  left: 300px;
+  position: absolute;
+  width: 100%;
+}
+
+/* starting animations for leave */
+
+.slide.ng-leave-active {
+  left: 3000px;
+  position: absolute;
+  width: 100%;
+}
+
+/* terminal animations for leave */
+
+/*
+Pantone animation clean
+*/
+
+.pantoneani.ng-enter,
+.pantoneani.ng-leave {
+  transition: 1.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) all;
+}
+
+.pantoneani.ng-enter {
+  right: 3000px;
+  position: absolute;
+}
+
+/* starting animations for enter */
+
+.pantoneani.ng-enter-active {
+  right: 0px;
+  position: absolute;
+}
+
+/* terminal animations for enter */
+
+.pantoneani.ng-leave {
+  left: 300px;
+  position: absolute;
+}
+
+/* starting animations for leave */
+
+.pantoneani.ng-leave-active {
+  left: 3000px;
+  position: absolute;
+}
+
+/* terminal animations for leave */
+
+/*
+Pantone animation next
+*/
+
+.next.ng-enter,
+.next.ng-leave {
+  transition: 1.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) all!important;
+}
+
+.next.ng-enter {
+  right: 100%;
+  top: 10px;
+  position: absolute;
+  z-index: 100;
+}
+
+/* starting animations for enter */
+
+.next.ng-enter-active {
+  right: 0;
+  top: 10px;
+  position: absolute;
+}
+
+/* terminal animations for enter */
+
+.next.ng-leave {
+  left: 10px;
+  right: 10px;
+  top: 10px;
+  position: absolute;
+  z-index: 1;
+}
+
+/* starting animations for leave */
+
+.next.ng-leave-active {
+  left: 10px;
+  right: 10px;
+  top: 10px;
+  position: absolute;
+}
+
+/* terminal animations for leave */
+
+/*
+Pantone animation prev
+*/
+
+.prev.ng-enter,
+.prev.ng-leave {
+  transition: 1.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) all!important;
+}
+
+.prev.ng-enter {
+  left: 100%;
+  top: 10px;
+  position: absolute;
+  z-index: 100;
+}
+
+/* starting animations for enter */
+
+.prev.ng-enter-active {
+  left: 1%;
+  top: 10px;
+  position: absolute;
+}
+
+/* terminal animations for enter */
+
+.prev.ng-leave {
+  left: 10px;
+  top: 10px;
+  right: 10px;
+  position: absolute;
+  z-index: 1;
+}
+
+/* starting animations for leave */
+
+.prev.ng-leave-active {
+  left: 10px;
+  top: 10px;
+  right: 10px;
+  position: absolute;
+}
+
+/* terminal animations for leave */
+
+.close.ng-enter,
+.close.ng-leave {
+  transition: 1.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) all!important;
+}
+
+.close.ng-leave {
+  position: fixed;
+  width: 99%;
+  width: calc(100% - 20px);
+  height: 99%;
+  height: calc(100% - 20px);
+  opacity: 0.5;
+  z-index: 100;
+}
+
+/* starting animations for leave */
+
+.close.ng-leave-active {
+  width: 99%;
+  width: calc(100% - 20px);
+  height: 0%;
+  height: calc(0% - 20px);
+  position: fixed;
+  opacity: 0;
+}
+
+/* terminal animations for leave */
+
+/*
+Pantone animation open
+*/
+
+.open.ng-enter,
+.open.ng-leave {
+  transition: 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) all!important;
+}
+
+.open.ng-enter {
+  width: 98%;
+  width: calc(100% - 20px);
+  height: 98%;
+  height: calc(10% - 20px);
+  opacity: 0.1;
+  position: fixed;
+  z-index: 100;
+}
+
+/* starting animations for enter */
+
+.open.ng-enter-active {
+  height: 98%;
+  width: calc(100% - 20px);
+  height: 98%;
+  height: calc(100% - 20px);
+  opacity: 1;
+  position: fixed;
+}
+
+/* terminal animations for enter */
+
+.open.ng-leave {
+  position: fixed;
+  z-index: 1;
+}
+
+/* starting animations for leave */
+
+.open.ng-leave-active {
+  position: fixed;
+}
+
+/* terminal animations for leave */
+
+/*
+  Pantone inner text
+  */
+
+.pantone_text {
+  color: white;
+  width: 50%;
+  margin: auto;
+  font-size: 30px;
+  margin-top: 15%;
+  margin-bottom: 15%;
+  position: relative;
+  margin-left: 25%;
+  margin-right: 25%;
+}
+
+.pantone_text p {
+  color: white;
+}
+
+.pantone_head {
+  color: white;
+  text-align: center;
+}
+
+.pantone_head span {
+  color: white;
+  font-style: italic;
+}
+
+/*
+SIDE MENU
+*/
+
+.togglenav toggle-nav {
+  display: block;
+}
+
+.togglenav {
+  position: fixed;
+  top: 50%;
+  left: 10%;
+  z-index: 999999;
+  background-color: white;
+  left: calc(10% + 10px);
+}
+
+.nav ul {
+  padding: 0;
+  margin: 0;
+  display: block;
+  margin: auto;
+  width: 100%;
+  text-align: center;
+}
+
+.nav {
+  position: fixed;
+  height: 99%;
+  height: calc(100% - 20px);
+  top: 10%;
+  top: calc(0% + 10px);
+  bottom: 0%;
+  bottom: calc(0% + 10px);
+  left: 0%;
+  left: calc(0% + 10px);
+  margin: 0;
+  padding: 0;
+  width: 29%;
+  width: calc(100% - 20px);
+  background-color: #FAFADB;
+}
+
+.nav ul li a {
+  font-size: 3em;
+  text-decoration: none;
+  text-transform: lowercase;
+  text-shadow: 3px 4px 0 white;
+  margin: auto;
+  display: block;
+  transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) all!important;
+}
+
+.nav ul li a:hover {
+  text-shadow: 0px 0px 0 white;
+}
+
+.nav li {
+  list-style: none;
+  width: 100%;
+  margin: auto;
+}
+
+.togglenav .line {
+  background-color: #2cd7ff;
+  width: 30px;
+  height: 3px;
+  display: block;
+  border-radius: 50%;
+  margin: 5px;
+}
+
+/*
+Main menu animation open
+*/
+
+.open_nav.ng-enter,
+.open_nav.ng-leave {
+  transition: 1.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) all!important;
+}
+
+.open_nav.ng-enter {
+  position: fixed;
+  width: 0%;
+  width: calc(0% - 10px);
+  opacity: 0;
+}
+
+.open_nav.ng-enter ul {
+  position: relative;
+  left: 200%;
+  left: calc(-200% + 10px);
+  opacity: 0;
+  transition: 1.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) all!important;
+}
+
+.open_nav.ng-enter ul li {
+  position: relative;
+  left: -200%;
+  left: calc(-200% + 10px);
+  opacity: 0;
+  transition: 1.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) all!important;
+}
+
+.open_nav.ng-enter ul li a {
+  position: relative;
+  left: -200%;
+  left: calc(-200% + 10px);
+  opacity: 0;
+  transition: 1.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) all!important;
+  z-index: 999;
+}
+
+/* starting animations for enter */
+
+.open_nav.ng-enter-active {
+  position: fixed;
+  width: calc(100% - 20px);
+  opacity: 1;
+}
+
+.open_nav.ng-enter-active ul {
+  position: relative;
+  left: 0%;
+  left: calc(0% + 10px);
+  opacity: 1;
+  transition: 1.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) all!important;
+}
+
+.open_nav.ng-enter-active ul li {
+  position: relative;
+  left: 0%;
+  left: calc(0% + 10px);
+  opacity: 1;
+  transition: 1.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) all!important;
+}
+
+.open_nav.ng-enter-active ul li a {
+  position: relative;
+  left: 0%;
+  left: calc(0% + 10px);
+  opacity: 1;
+  transition: 1.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) all!important;
+  z-index: 999;
+}
+
+/* terminal animations for enter */
+
+.open_nav.ng-leave {
+  position: fixed;
+  width: 100%;
+  width: calc(100% - 20px);
+  opacity: 1;
+}
+
+.open_nav.ng-leave ul {
+  position: relative;
+  left: 0%;
+  left: calc(0% + 10px);
+  opacity: 1;
+  transition: 1.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) all!important;
+}
+
+.open_nav.ng-leave ul li {
+  position: relative;
+  left: 0%;
+  left: calc(0% + 10px);
+  opacity: 1;
+  -webkit-transition: 1.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) all!important;
+  -moz-transition: 1.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) all!important;
+  -ms-transition: 1.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) all!important;
+  -o-transition: 1.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) all!important;
+}
+
+.open_nav.ng-leave ul li a {
+  position: relative;
+  left: 0%;
+  left: calc(0% + 10px);
+  opacity: 1;
+  -webkit-transition: 1.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) all!important;
+  -moz-transition: 1.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) all!important;
+  -ms-transition: 1.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) all!important;
+  -o-transition: 1.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) all!important;
+  z-index: 999;
+}
+
+/* starting animations for leave */
+
+.open_nav.ng-leave-active {
+  position: fixed;
+  width: 0%;
+  width: calc(0% - 10px);
+  opacity: 0;
+}
+
+.open_nav.ng-leave-active ul {
+  position: relative;
+  left: -200%;
+  left: calc(-200% + 10px);
+  opacity: 0;
+  transition: 1.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) all!important;
+}
+
+.open_nav.ng-leave-active ul li {
+  position: relative;
+  left: -200%;
+  left: calc(-200% + 10px);
+  opacity: 0;
+  transition: 1.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) all!important;
+}
+
+.open_nav.ng-leave-active ul li a {
+  position: relative;
+  left: -200%;
+  left: calc(-200% + 10px);
+  opacity: 0;
+  transition: 1.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) all!important;
+  z-index: 999;
+}
+
+/* terminal animations for leave */
+
+.closeX:hover {
+  text-shadow: 0px 0px 0 white;
+}
+
+.closeX {
+  font-size: 3em;
+  text-decoration: none;
+  text-transform: lowercase;
+  text-shadow: 3px 4px 0 white;
+  text-align: right;
+  margin: 0em auto;
+  display: block;
+  cursor: pointer;
+  padding-right: 1em;
+  transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) all!important;
+}
+
+.pantones_home {
+  display: inline-block;
+}

@@ -1,0 +1,14 @@
+{
+  "name": "angular-ui-utils",
+  "homepage": "https://github.com/angular-ui/ui-utils",
+  "_release": "ba9b891298",
+  "_resolution": {
+    "type": "branch",
+    "branch": "bower-keypress",
+    "commit": "ba9b891298bc41171612c9d412e77cf912551666"
+  },
+  "_source": "git://github.com/angular-ui/ui-utils.git",
+  "_target": "bower-keypress",
+  "_originalSource": "angular-ui-utils",
+  "_direct": true
+}

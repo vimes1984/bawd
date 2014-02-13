@@ -2,7 +2,6 @@
 /*global $:false */
 angular.module('bawdApp')
     .controller('MainCtrl', function () {
-    $(document).ready(function ($) {
         $('.page_cont_wrap').css('border', '0px solid #aaFFFF');
         var winhei = $(window).height();
         var windith = $(window).width();
@@ -140,4 +139,3 @@ angular.module('bawdApp')
               }
           }).lazylinepainter('paint');
       });
-  });

@@ -1,0 +1,16 @@
+{
+  "name": "lazy-line-painter",
+  "homepage": "https://github.com/camoconnell/lazy-line-painter",
+  "main": "jquery.lazylinepainter-1.4.1.js",
+  "version": "1.4.1",
+  "_release": "1.4.1",
+  "_resolution": {
+    "type": "version",
+    "tag": "1.4.1",
+    "commit": "a2f6853f36f274aac49bf702792cb870212ddbe6"
+  },
+  "_source": "https://github.com/camoconnell/lazy-line-painter.git",
+  "_target": "~1.4.1",
+  "_originalSource": "https://github.com/camoconnell/lazy-line-painter.git",
+  "_direct": true
+}

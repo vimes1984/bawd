@@ -1,15 +1,12 @@
-<div class="page_container">
-  <div ng-include="menu" class=""></div>
+              <header>
+                <a ng-href="#" class="top_left_logo"><img src="images/logo.png" alt="BAWD Logo"></a>
+              </header>
+              <div class="togglenav">
+				<toggle-nav>
+				</toggle-nav>	
+			</div>
 <section>
-
-  <div ng-click="pantone()" class="pantone_wrap_outer blue slide_bottom">
-    <div  class="pantone_wrap_inner blue">
-      <div class="pantone blue">
-        <img src="images/about.png" alt="">
-      </div>
-    </div>
-  </div>
-  <div ng-include="template" ng-class="PrevNext" class="pantoneani remo pantonebg blue"></div>
+  	<div ng-include="template" tabindex="0" id="focus_force" ng-keydown="keypress($event.keyCode)" ng-class="PrevNext"  class="remo pantonebg blue" ></div>
 </section>
 <section class="right_side"><p>Build a Web doctor</p></section>
 </div>
