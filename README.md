@@ -1,5 +1,6 @@
 <h1>B.A.W.D</h1>
-<p>This is my personal website feel free to use distribute as you see fit</p>
+<p>This is my personal website feel free to use distribute as you see fit. 
+It's  built using yeoman, grunt &amp; bower</p>
 <p>version: 0.0.1 </p> 
 <h2>Dependencies:</h2>
 <h3>dependencies:</h3> 
@@ -20,3 +21,5 @@
 	<li>angular-mocks: 1.2.6,</li>
 	<li>angular-scenario: 1.2.6</li>
 </ul>
+<h3>TO DO:</h3>
+Write unit tests 
