@@ -3,9 +3,8 @@
 angular.module('bawdApp')
   .directive('about', function () {
     return {
-      templateUrl: 'views/pantone-inner.html',
       restrict: 'AE',
-      link: function postLink($scope, element) {
+      link: function postLink($scope) {
 				$scope.PrevNext = 'open';
 				$scope.mainmenulink = '';
 				$('.top_left_logo.white  img').css('position', 'fixed');

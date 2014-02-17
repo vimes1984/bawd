@@ -324,6 +324,7 @@ module.exports = function (grunt) {
     }
   });
 
+  grunt.loadNpmTasks('grunt-notify');
 
   grunt.registerTask('serve', function (target) {
     if (target === 'dist') {

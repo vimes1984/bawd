@@ -10,8 +10,8 @@ angular.module('bawdApp')
       {name:'Pantone five', url:'views/projects_pantone_five.html'},
 
     ];
-  $scope.pantoneconter = 0;
-  $scope.template = $scope.pantones[0].url;
-  $scope.PrevNext = 'open';
-  $scope.mainmenulink = '';
-});
+    $scope.pantoneconter = 0;
+    $scope.template = $scope.pantones[0].url;
+    $scope.PrevNext = 'open';
+    $scope.mainmenulink = '';
+  });

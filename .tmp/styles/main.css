@@ -177,8 +177,8 @@ body {
 }
 
 * {
-  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-  font-weight: 300;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 700;
   color: #666666;
   /*  -webkit-transition: 0.8s linear all;
   -moz-transition: 0.8s linear all;
@@ -208,7 +208,7 @@ p {
   position: absolute;
   -webkit-transform: rotate(-90deg);
   transform: rotate(-90deg);
-  z-index: 100;
+  z-index: 999999999;
   width: 100%;
   top: 50%;
   top: calc(50% + 10px);
@@ -218,40 +218,122 @@ p {
 }
 
 .right_side p {
+  transition: 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) all;
   left: 0;
   position: relative;
   margin: 0;
   font-weight: 200;
+  font-style: italic;
+  color: white;
 }
 
 .blue {
-  background-color: #2cd7ff;
+  background-color: #74d2ff;
 }
 
 .green {
-  background-color: green;
+  background-color: #6fffc7;
 }
 
 .red {
-  background-color: red;
+  background-color: #ff6969;
+}
+
+.yellow {
+  background-color: #ffd74b;
 }
 
 .black {
   background-color: black;
 }
 
-.pantone {
-  position: relative;
+
+
+/*
+  Pantone inner text
+  */
+
+.row_pantone {
+  width: 50%;
   margin: auto;
-  width: 200px;
+  display: block;
+  max-width: 500px;
+  max-height: 250px;
+}
+
+.pantone_text {
+  color: white;
+  width: 50%;
   margin: auto;
+  font-size: 16px;
+  margin-bottom: 20px;
+  line-height: 27px;
+}
+
+
+
+.pantone_head {
+  font-family: "Calisto MT", "Bookman Old Style", Bookman, "Goudy Old Style", Garamond, "Hoefler Text", "Bitstream Charter", Georgia, serif;
+  color: white;
+  font-style: italic;
+  margin-bottom: 20px;
+  font-size: 90px;
+  font-weight: 200;
+}
+
+.pantone_head_sub {
+  font-family: "Calisto MT", "Bookman Old Style", Bookman, "Goudy Old Style", Garamond, "Hoefler Text", "Bitstream Charter", Georgia, serif;
+  color: white;
+  font-style: italic;
+  margin-bottom: 20px;
+  font-size: 31px;
+  font-weight: 200;
+}
+
+
+
+.pantones_home a {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.pantones_home {
+  width: 49%;
+  display: inline-block;
+  vertical-align: top;
+  max-width: 250px;
+  max-height: 250px;
+  transition: 1.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) all;
+}
+
+/*https://github.com/iameugenejo/angular-centered/angular-centered.css*/
+
+.angular-center-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  display: table;
+  z-index: 9999;
+}
+
+.angular-centered {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+}
+
+
+
+.pantone_wrap_outer img {
+  margin: auto;
+  display: block;
 }
 
 .pantone_wrap_outer {
-  position: relative;
-  width: 400px;
-  padding: 1px;
-  cursor: pointer;
+  padding: 40px;
 }
 
 .pantonebg {
@@ -261,27 +343,26 @@ p {
   width: calc(100% - 20px);
   height: 98%;
   height: calc(100% - 20px);
+  z-index: 100;
 }
 
 .pantone_wrap_inner {
   position: relative;
-  padding: 40px;
-  margin: 40px;
-  border: 2px solid white;
 }
 
 .top_left_logo {
   position: relative;
+  z-index: 99999;
 }
 
 .top_left_logo img {
   position: fixed;
-  top: 50px;
-  left: 50px;
+  top: 24px;
+  left: 40px;
 }
 
 .top_left_logo.white img {
-  position: absolute;
+  position: fixed;
   top: 24px;
   left: 40px;
 }
@@ -369,49 +450,16 @@ p {
 /* terminal animations for leave */
 
 /*
-Pantone animation clean
-*/
-
-.pantoneani.ng-enter,
-.pantoneani.ng-leave {
-  transition: 1.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) all;
-}
-
-.pantoneani.ng-enter {
-  right: 3000px;
-  position: absolute;
-}
-
-/* starting animations for enter */
-
-.pantoneani.ng-enter-active {
-  right: 0px;
-  position: absolute;
-}
-
-/* terminal animations for enter */
-
-.pantoneani.ng-leave {
-  left: 300px;
-  position: absolute;
-}
-
-/* starting animations for leave */
-
-.pantoneani.ng-leave-active {
-  left: 3000px;
-  position: absolute;
-}
-
-/* terminal animations for leave */
-
-/*
 Pantone animation next
 */
 
 .next.ng-enter,
 .next.ng-leave {
-  transition: 1.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) all!important;
+  transition: 1.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) all;
+}
+
+.next.ng-enter .angular-center-container {
+  position: absolute;
 }
 
 .next.ng-enter {
@@ -421,15 +469,12 @@ Pantone animation next
   z-index: 100;
 }
 
-/* starting animations for enter */
-
 .next.ng-enter-active {
   right: 0;
   top: 10px;
   position: absolute;
+  z-index: 100;
 }
-
-/* terminal animations for enter */
 
 .next.ng-leave {
   left: 10px;
@@ -439,16 +484,13 @@ Pantone animation next
   z-index: 1;
 }
 
-/* starting animations for leave */
-
 .next.ng-leave-active {
   left: 10px;
   right: 10px;
   top: 10px;
   position: absolute;
+  z-index: 1;
 }
-
-/* terminal animations for leave */
 
 /*
 Pantone animation prev
@@ -456,7 +498,7 @@ Pantone animation prev
 
 .prev.ng-enter,
 .prev.ng-leave {
-  transition: 1.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) all!important;
+  transition: 1.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) all;
 }
 
 .prev.ng-enter {
@@ -491,111 +533,7 @@ Pantone animation prev
   top: 10px;
   right: 10px;
   position: absolute;
-}
-
-/* terminal animations for leave */
-
-.close.ng-enter,
-.close.ng-leave {
-  transition: 1.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) all!important;
-}
-
-.close.ng-leave {
-  position: fixed;
-  width: 99%;
-  width: calc(100% - 20px);
-  height: 99%;
-  height: calc(100% - 20px);
-  opacity: 0.5;
-  z-index: 100;
-}
-
-/* starting animations for leave */
-
-.close.ng-leave-active {
-  width: 99%;
-  width: calc(100% - 20px);
-  height: 0%;
-  height: calc(0% - 20px);
-  position: fixed;
-  opacity: 0;
-}
-
-/* terminal animations for leave */
-
-/*
-Pantone animation open
-*/
-
-.open.ng-enter,
-.open.ng-leave {
-  transition: 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) all!important;
-}
-
-.open.ng-enter {
-  width: 98%;
-  width: calc(100% - 20px);
-  height: 98%;
-  height: calc(10% - 20px);
-  opacity: 0.1;
-  position: fixed;
-  z-index: 100;
-}
-
-/* starting animations for enter */
-
-.open.ng-enter-active {
-  height: 98%;
-  width: calc(100% - 20px);
-  height: 98%;
-  height: calc(100% - 20px);
-  opacity: 1;
-  position: fixed;
-}
-
-/* terminal animations for enter */
-
-.open.ng-leave {
-  position: fixed;
   z-index: 1;
-}
-
-/* starting animations for leave */
-
-.open.ng-leave-active {
-  position: fixed;
-}
-
-/* terminal animations for leave */
-
-/*
-  Pantone inner text
-  */
-
-.pantone_text {
-  color: white;
-  width: 50%;
-  margin: auto;
-  font-size: 30px;
-  margin-top: 15%;
-  margin-bottom: 15%;
-  position: relative;
-  margin-left: 25%;
-  margin-right: 25%;
-}
-
-.pantone_text p {
-  color: white;
-}
-
-.pantone_head {
-  color: white;
-  text-align: center;
-}
-
-.pantone_head span {
-  color: white;
-  font-style: italic;
 }
 
 /*
@@ -611,9 +549,36 @@ SIDE MENU
   top: 50%;
   left: 10%;
   z-index: 999999;
-  background-color: white;
   left: calc(10% + 10px);
+  cursor: pointer;
 }
+
+.row {
+  float: left;
+}
+
+.togglenav .line {
+  width: 15px;
+  height: 15px;
+  border-radius: 0%;
+  margin: 0px;
+  border: 1px solid white;
+}
+
+.line.one {
+  border-right: 0;
+}
+
+.line.two {
+  border-right: 0;
+  border-top: 0;
+}
+
+.line.three {
+  border-bottom: 0;
+}
+
+
 
 .nav ul {
   padding: 0;
@@ -638,7 +603,7 @@ SIDE MENU
   padding: 0;
   width: 29%;
   width: calc(100% - 20px);
-  background-color: #FAFADB;
+  background-color: #ffffff;
 }
 
 .nav ul li a {
@@ -648,7 +613,7 @@ SIDE MENU
   text-shadow: 3px 4px 0 white;
   margin: auto;
   display: block;
-  transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) all!important;
+  transition: 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) all;
 }
 
 .nav ul li a:hover {
@@ -661,164 +626,240 @@ SIDE MENU
   margin: auto;
 }
 
-.togglenav .line {
-  background-color: #2cd7ff;
-  width: 30px;
-  height: 3px;
-  display: block;
-  border-radius: 50%;
-  margin: 5px;
-}
+
 
 /*
 Main menu animation open
 */
 
-.open_nav.ng-enter,
-.open_nav.ng-leave {
-  transition: 1.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) all!important;
+/* Add animation */
+
+.pantone_wrap_outer.ng-animate {
+  transition: 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) all;
 }
 
-.open_nav.ng-enter {
-  position: fixed;
-  width: 0%;
-  width: calc(0% - 10px);
-  opacity: 0;
+.pantone_wrap_outer.ng-leave {
+  width: 250px;
+  height: 250px;
 }
 
-.open_nav.ng-enter ul {
-  position: relative;
-  left: 200%;
-  left: calc(-200% + 10px);
-  opacity: 0;
-  transition: 1.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) all!important;
+.pantone_wrap_outer.ng-leave-active {
+  width: 0;
+  height: 0;
+  left: -10%;
 }
 
-.open_nav.ng-enter ul li {
-  position: relative;
-  left: -200%;
-  left: calc(-200% + 10px);
-  opacity: 0;
-  transition: 1.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) all!important;
+.top_left_logo.ng-enter {
+  -webkit-animation-name: rollIn;
+  animation-name: rollIn;
 }
 
-.open_nav.ng-enter ul li a {
-  position: relative;
-  left: -200%;
-  left: calc(-200% + 10px);
-  opacity: 0;
-  transition: 1.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) all!important;
-  z-index: 999;
+home.inner_patone {
+  display: block;
 }
 
-/* starting animations for enter */
-
-.open_nav.ng-enter-active {
-  position: fixed;
-  width: calc(100% - 20px);
-  opacity: 1;
-}
-
-.open_nav.ng-enter-active ul {
-  position: relative;
-  left: 0%;
-  left: calc(0% + 10px);
-  opacity: 1;
-  transition: 1.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) all!important;
-}
-
-.open_nav.ng-enter-active ul li {
-  position: relative;
-  left: 0%;
-  left: calc(0% + 10px);
-  opacity: 1;
-  transition: 1.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) all!important;
-}
-
-.open_nav.ng-enter-active ul li a {
-  position: relative;
-  left: 0%;
-  left: calc(0% + 10px);
-  opacity: 1;
-  transition: 1.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) all!important;
-  z-index: 999;
-}
-
-/* terminal animations for enter */
-
-.open_nav.ng-leave {
-  position: fixed;
+home.inner_patone img {
   width: 100%;
-  width: calc(100% - 20px);
-  opacity: 1;
 }
 
-.open_nav.ng-leave ul {
-  position: relative;
+home.inner_patone.ng-enter,
+home.inner_patone.ng-enter .pantone_wrap_outer,
+home.inner_patone.ng-enter .pantone_wrap_outer img {
+  transition: 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) all;
+}
+
+home.inner_patone.ng-enter {
+  display: block;
+  top: 0%;
   left: 0%;
+  z-index: 999999;
   left: calc(0% + 10px);
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+}
+
+home.inner_patone.ng-enter .pantone_wrap_outer {
+  padding: 0;
+}
+
+home.inner_patone.ng-enter.ng-enter-active .pantone_wrap_outer {
+  padding: 40px;
+}
+
+home.inner_patone.ng-enter img {
+  opacity: 0;
+}
+
+home.inner_patone.ng-enter.ng-enter-active img {
   opacity: 1;
-  transition: 1.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) all!important;
 }
 
-.open_nav.ng-leave ul li {
-  position: relative;
-  left: 0%;
-  left: calc(0% + 10px);
+home.inner_patone.ng-enter.ng-enter-active {
+  display: block;
+  top: 25%;
+  left: 25%;
+  z-index: 999999;
+  left: calc(25% + 10px);
+  cursor: pointer;
+  height: 250px;
+  width: 245px;
+}
+
+projects.inner_patone {
+  display: block;
+}
+
+
+
+projects.inner_patone.ng-enter,
+projects.inner_patone.ng-enter .pantone_wrap_outer {
+  transition: 0.8s  all;
+}
+
+projects.inner_patone.ng-enter {
+  display: block;
+  top: 50%;
+  left: 10%;
+  z-index: 999999;
+  left: calc(10% + 10px);
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+}
+
+projects.inner_patone.ng-enter .pantone_wrap_outer {
+  padding: 0;
+}
+
+projects.inner_patone.ng-enter.ng-enter-active .pantone_wrap_outer {
+  padding: 40px;
+}
+
+projects.inner_patone.ng-enter img {
+  opacity: 0;
+}
+
+projects.inner_patone.ng-enter.ng-enter-active img {
   opacity: 1;
-  -webkit-transition: 1.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) all!important;
-  -moz-transition: 1.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) all!important;
-  -ms-transition: 1.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) all!important;
-  -o-transition: 1.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) all!important;
 }
 
-.open_nav.ng-leave ul li a {
-  position: relative;
-  left: 0%;
-  left: calc(0% + 10px);
+projects.inner_patone.ng-enter.ng-enter-active {
+  display: block;
+  top: 25%;
+  left: 50%;
+  z-index: 999999;
+  left: calc(50% + 10px);
+  cursor: pointer;
+  height: 250px;
+  width: 245px;
+}
+
+about.inner_patone {
+  display: block;
+}
+
+about.inner_patone.ng-enter,
+about.inner_patone.ng-enter .pantone_wrap_outer {
+  transition: 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) all;
+}
+
+about.inner_patone.ng-enter {
+  display: block;
+  top: 50%;
+  left: 10%;
+  z-index: 999999;
+  left: calc(10% + 10px);
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+}
+
+about.inner_patone.ng-enter .pantone_wrap_outer {
+  padding: 0;
+}
+
+about.inner_patone.ng-enter.ng-enter-active .pantone_wrap_outer {
+  padding: 40px;
+}
+
+about.inner_patone.ng-enter img {
+  opacity: 0;
+}
+
+about.inner_patone.ng-enter.ng-enter-active img {
   opacity: 1;
-  -webkit-transition: 1.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) all!important;
-  -moz-transition: 1.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) all!important;
-  -ms-transition: 1.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) all!important;
-  -o-transition: 1.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) all!important;
-  z-index: 999;
 }
 
-/* starting animations for leave */
+about.inner_patone.ng-enter.ng-enter-active {
+  display: block;
+  top: 50%;
+  left: 50%;
+  z-index: 999999;
+  left: calc(50% + 10px);
+  cursor: pointer;
+  height: 250px;
+  width: 245px;
+}
 
-.open_nav.ng-leave-active {
-  position: fixed;
-  width: 0%;
-  width: calc(0% - 10px);
+contact.inner_patone {
+  display: block;
+}
+
+contact.inner_patone.ng-enter,
+contact.inner_patone.ng-enter .pantone_wrap_outer {
+  transition: 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) all;
+}
+
+contact.inner_patone.ng-enter {
+  display: block;
+  top: 50%;
+  left: 10%;
+  z-index: 999999;
+  left: calc(10% + 10px);
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+}
+
+contact.inner_patone.ng-enter .pantone_wrap_outer {
+  padding: 0;
+}
+
+contact.inner_patone.ng-enter.ng-enter-active .pantone_wrap_outer {
+  padding: 40px;
+}
+
+contact.inner_patone.ng-enter img {
   opacity: 0;
 }
 
-.open_nav.ng-leave-active ul {
-  position: relative;
-  left: -200%;
-  left: calc(-200% + 10px);
-  opacity: 0;
-  transition: 1.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) all!important;
+contact.inner_patone.ng-enter.ng-enter-active img {
+  opacity: 1;
 }
 
-.open_nav.ng-leave-active ul li {
-  position: relative;
-  left: -200%;
-  left: calc(-200% + 10px);
-  opacity: 0;
-  transition: 1.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) all!important;
+contact.inner_patone.ng-enter.ng-enter-active {
+  display: block;
+  top: 50%;
+  left: 25%;
+  z-index: 999999;
+  left: calc(25% + 10px);
+  cursor: pointer;
+  height: 250px;
+  width: 245px;
 }
 
-.open_nav.ng-leave-active ul li a {
-  position: relative;
-  left: -200%;
-  left: calc(-200% + 10px);
-  opacity: 0;
-  transition: 1.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) all!important;
-  z-index: 999;
+.pantone_wrap_outer.ng-leave {
+  transition: 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) all;
 }
 
-/* terminal animations for leave */
+.pantone_wrap_outer.ng-leave {
+  opacity: 1;
+}
+
+.pantone_wrap_outer.ng-leave.ng-leave-active {
+  opacity: 0;
+}
 
 .closeX:hover {
   text-shadow: 0px 0px 0 white;
@@ -834,9 +875,52 @@ Main menu animation open
   display: block;
   cursor: pointer;
   padding-right: 1em;
-  transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) all!important;
+  z-index: 999999999;
+  position: fixed;
+  right: 0;
+  transition: 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) all;
 }
 
-.pantones_home {
+.right_side p.gray {
+  color: #737373;
+  transition: 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) all;
+}
+
+
+
+
+
+.arrowswrap {
+  display: block;
+  width: 84px;
+  height: 35px;
+  margin: auto;
+  top: 98%;
+  left: 50%;
+  top: calc(100% - 50px);
+  left: calc(50% - 44px);
+  position: fixed;
+  z-index: 9999999;
+}
+
+.arrws {
+  background-image: url('../images/arrws.png');
+  background-repeat: no-repeat;
+  width: 39px;
+  height: 33px;
   display: inline-block;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.arrws.prev {
+  background-position: 0 0;
+}
+
+.arrws.next {
+  background-position: -42px 0;
+}
+
+.introLogo {
+  margin-bottom: 55px;
 }

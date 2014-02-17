@@ -1,7 +1,9 @@
-  <section id="focus_force" ngkbfocus ng-keydown="keypress($event.keyCode)">
-  <header>
-    <a ng-href="#" class="top_left_logo white"><img src="images/logo_white.png" alt="BAWD Logo"></a>
-  </header>
-  <div ng-click="prevpro()"><p>prev</p></div>
-<div ng-click="nextpro()"><p>next</p></div>
+<section id="focus_force" ngkbfocus ng-keydown="keypress($event.keyCode)">
+	<header>
+		<a ng-href="#" class="top_left_logo white"><img src="images/logo_white.png" alt="BAWD Logo"></a>
+	</header>
+	<div class="arrowswrap">	
+	  	<div class="arrws prev" ng-click="prevpro()"></div>
+		<div class="arrws next"ng-click="nextpro()"></div>
+	</div>	
 </section>

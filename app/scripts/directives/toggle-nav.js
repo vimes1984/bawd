@@ -5,13 +5,8 @@ angular.module('bawdApp')
     return {
       templateUrl: 'views/toggle-nav.html',
       restrict: 'AE',
-      link: function postLink($scope, $el) {
-      	$scope.mainmenulink = '';
-      	$scope.togglethis = function togglethis(){
-      		$scope.mainmenulink = 'views/menu.html';
-      		$scope.openclosemenu = 'open_nav';
-      	};
-
+      controller: 'MenuCtrl',
+      link: function(){
       }
     };
   });

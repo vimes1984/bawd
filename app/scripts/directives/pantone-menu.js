@@ -6,12 +6,12 @@ angular.module('bawdApp')
       templateUrl: 'views/pantone_menu.html',
       restrict: 'AE',
       transclude: true,
-      link: function($scope, $el) {
+      link: function($scope) {
 				var arraylength = $scope.pantones.length;
 				function border(valueWidth, color){
 				  $('.page_cont_wrap').css('border', valueWidth+'px solid #'+color);
 				}
-				border(10, 'ffffff');
+				border(10, 'f5f3f3');
 				function next(){
 					$scope.$parent.pantoneconter  = $scope.$parent.pantoneconter + 1;
 					$scope.$parent.PrevNext = 'next';
