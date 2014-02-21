@@ -1,11 +1,11 @@
-<nav  ng-click="togglethis()">
+<nav  ng-click="togglethis()" class="tgglwrp">
 	<div class="row">
-		<div class="line one"></div>
-		<div class="line two"></div>
+		<div class="animated fadeIn line one"></div>
+		<div class="animated fadeIn line two"></div>
 	</div>
 	<div class="row">
-		<div class="line three"></div>	
-		<div class="line four"></div>
+		<div class="animated fadeIn line three"></div>	
+		<div class="animated fadeIn line four"></div>
 	</div>
 </nav>
 <div class="nav" ng-show="togglehideshow"></div>
@@ -13,22 +13,31 @@
 <header>
 	<a ng-href="#" class="top_left_logo grey"><img src="images/logo.png" alt="BAWD Logo"></a>
 </header>
-	<p ng-click="closemenu()" class="closeX">X</p>
+	<div ng-click="closemenu()" class="closeX">
+	<div class="row">
+		<div id="lineone" class="line one"></div>
+		<div id="linetwo" class="line two"></div>
+	</div>
+	<div class="row">
+		<div id="linethree" class="line three "></div>	
+		<div id="linefour" class="line four "></div>
+	</div>
+	</div>
 	<centered>
 		<div class="row_pantone">
 			<section class="pantones_home">
-				<a ng-click="closemenulink(element)"  ng-href="#/services"><home class="inner_patone" ng-include="templatehome"></home></a>
+				<a ng-click="closemenulink('/services')"  ng-href><home class="inner_patone" ng-include="templatehome"></home></a>
 			</section><!--
 			--><section class="pantones_home">
-				<a ng-click="closemenulink(element)"  ng-href="#/project"><projects ng-include="templateprojects" class="inner_patone"></projects></a>
+				<a ng-click="closemenulink('/project')"  ng-href><projects ng-include="templateprojects" class="inner_patone"></projects></a>
 			</section>
 		</div>
 		<div class="row_pantone">
 			<section class="pantones_home">
-				<a ng-click="closemenulink(element)"  ng-href="#/contact"><contact class="inner_patone" ng-include="templatecontact"></contact></a>
+				<a ng-click="closemenulink('/contact')"  ng-href><contact class="inner_patone" ng-include="templatecontact"></contact></a>
 			</section><!--
 			--><section class="pantones_home">
-				<a ng-click="closemenulink(element)"  ng-href="#/about"><about ng-include="templateabout" class="inner_patone" ></about></a>
+				<a ng-click="closemenulink('/about')"  ng-href><about ng-include="templateabout" class="inner_patone" ></about></a>
 			</section>
 		<div>
   </centered>

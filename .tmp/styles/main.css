@@ -70,7 +70,6 @@ video {
   margin: 0;
   padding: 0;
   border: 0;
-  outline: 0;
   font-size: 100%;
   vertical-align: baseline;
   background: transparent;
@@ -153,20 +152,6 @@ table {
 
 /* change border colour to suit your needs */
 
-hr {
-  display: block;
-  height: 1px;
-  border: 0;
-  border-top: 1px solid #cccccc;
-  margin: 1em 0;
-  padding: 0;
-}
-
-input,
-select {
-  vertical-align: middle;
-}
-
 /*END REST*/
 
 html,
@@ -176,32 +161,10 @@ body {
   overflow: hidden;
 }
 
-* {
+p {
   font-family: 'Quicksand', sans-serif;
   font-weight: 700;
   color: #666666;
-  /*  -webkit-transition: 0.8s linear all;
-  -moz-transition: 0.8s linear all;
-  -ms-transition: 0.8s linear all;
-  -o-transition: 0.8s linear all;
-  transition: 0.8s linear all;*/
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  margin: 0;
-}
-
-p {
-  text-align: center;
-}
-
-*:focus {
-  outline: none;
 }
 
 .right_side {
@@ -247,8 +210,6 @@ p {
   background-color: black;
 }
 
-
-
 /*
   Pantone inner text
   */
@@ -270,8 +231,6 @@ p {
   line-height: 27px;
 }
 
-
-
 .pantone_head {
   font-family: "Calisto MT", "Bookman Old Style", Bookman, "Goudy Old Style", Garamond, "Hoefler Text", "Bitstream Charter", Georgia, serif;
   color: white;
@@ -289,8 +248,6 @@ p {
   font-size: 31px;
   font-weight: 200;
 }
-
-
 
 .pantones_home a {
   display: block;
@@ -325,8 +282,6 @@ p {
   text-align: center;
 }
 
-
-
 .pantone_wrap_outer img {
   margin: auto;
   display: block;
@@ -338,7 +293,7 @@ p {
 
 .pantonebg {
   position: fixed;
-  border: 0px solid white;
+  border: 0;
   width: 98%;
   width: calc(100% - 20px);
   height: 98%;
@@ -426,7 +381,7 @@ p {
 /* starting animations for enter */
 
 .slide.ng-enter-active {
-  right: 0px;
+  right: 0;
   position: absolute;
   width: 100%;
 }
@@ -547,8 +502,8 @@ SIDE MENU
 .togglenav {
   position: fixed;
   top: 50%;
-  left: 10%;
   z-index: 999999;
+  left: 10%;
   left: calc(10% + 10px);
   cursor: pointer;
 }
@@ -560,9 +515,10 @@ SIDE MENU
 .togglenav .line {
   width: 15px;
   height: 15px;
-  border-radius: 0%;
-  margin: 0px;
+  border-radius: 0;
+  margin: 0;
   border: 1px solid white;
+  transition: 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) all;
 }
 
 .line.one {
@@ -578,11 +534,8 @@ SIDE MENU
   border-bottom: 0;
 }
 
-
-
 .nav ul {
   padding: 0;
-  margin: 0;
   display: block;
   margin: auto;
   width: 100%;
@@ -594,11 +547,11 @@ SIDE MENU
   height: 99%;
   height: calc(100% - 20px);
   top: 10%;
-  top: calc(0% + 10px);
-  bottom: 0%;
-  bottom: calc(0% + 10px);
-  left: 0%;
-  left: calc(0% + 10px);
+  top: calc(0 + 10px);
+  bottom: 0;
+  bottom: calc(0 + 10px);
+  left: 0;
+  left: calc(0 + 10px);
   margin: 0;
   padding: 0;
   width: 29%;
@@ -617,7 +570,7 @@ SIDE MENU
 }
 
 .nav ul li a:hover {
-  text-shadow: 0px 0px 0 white;
+  text-shadow: 0 0 0 white;
 }
 
 .nav li {
@@ -625,14 +578,6 @@ SIDE MENU
   width: 100%;
   margin: auto;
 }
-
-
-
-/*
-Main menu animation open
-*/
-
-/* Add animation */
 
 .pantone_wrap_outer.ng-animate {
   transition: 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) all;
@@ -654,6 +599,11 @@ Main menu animation open
   animation-name: rollIn;
 }
 
+.inner_patone img {
+  max-width: 100%;
+  min-width: 114px;
+}
+
 home.inner_patone {
   display: block;
 }
@@ -670,10 +620,10 @@ home.inner_patone.ng-enter .pantone_wrap_outer img {
 
 home.inner_patone.ng-enter {
   display: block;
-  top: 0%;
-  left: 0%;
+  top: 0;
   z-index: 999999;
-  left: calc(0% + 10px);
+  left: 0;
+  left: calc(0 + 10px);
   cursor: pointer;
   height: 15px;
   width: 15px;
@@ -698,8 +648,8 @@ home.inner_patone.ng-enter.ng-enter-active img {
 home.inner_patone.ng-enter.ng-enter-active {
   display: block;
   top: 25%;
-  left: 25%;
   z-index: 999999;
+  left: 25%;
   left: calc(25% + 10px);
   cursor: pointer;
   height: 250px;
@@ -710,8 +660,6 @@ projects.inner_patone {
   display: block;
 }
 
-
-
 projects.inner_patone.ng-enter,
 projects.inner_patone.ng-enter .pantone_wrap_outer {
   transition: 0.8s  all;
@@ -720,8 +668,8 @@ projects.inner_patone.ng-enter .pantone_wrap_outer {
 projects.inner_patone.ng-enter {
   display: block;
   top: 50%;
-  left: 10%;
   z-index: 999999;
+  left: 10%;
   left: calc(10% + 10px);
   cursor: pointer;
   height: 15px;
@@ -747,8 +695,8 @@ projects.inner_patone.ng-enter.ng-enter-active img {
 projects.inner_patone.ng-enter.ng-enter-active {
   display: block;
   top: 25%;
-  left: 50%;
   z-index: 999999;
+  left: 50%;
   left: calc(50% + 10px);
   cursor: pointer;
   height: 250px;
@@ -767,8 +715,8 @@ about.inner_patone.ng-enter .pantone_wrap_outer {
 about.inner_patone.ng-enter {
   display: block;
   top: 50%;
-  left: 10%;
   z-index: 999999;
+  left: 10%;
   left: calc(10% + 10px);
   cursor: pointer;
   height: 15px;
@@ -794,8 +742,8 @@ about.inner_patone.ng-enter.ng-enter-active img {
 about.inner_patone.ng-enter.ng-enter-active {
   display: block;
   top: 50%;
-  left: 50%;
   z-index: 999999;
+  left: 50%;
   left: calc(50% + 10px);
   cursor: pointer;
   height: 250px;
@@ -814,8 +762,8 @@ contact.inner_patone.ng-enter .pantone_wrap_outer {
 contact.inner_patone.ng-enter {
   display: block;
   top: 50%;
-  left: 10%;
   z-index: 999999;
+  left: 10%;
   left: calc(10% + 10px);
   cursor: pointer;
   height: 15px;
@@ -841,8 +789,8 @@ contact.inner_patone.ng-enter.ng-enter-active img {
 contact.inner_patone.ng-enter.ng-enter-active {
   display: block;
   top: 50%;
-  left: 25%;
   z-index: 999999;
+  left: 25%;
   left: calc(25% + 10px);
   cursor: pointer;
   height: 250px;
@@ -861,34 +809,10 @@ contact.inner_patone.ng-enter.ng-enter-active {
   opacity: 0;
 }
 
-.closeX:hover {
-  text-shadow: 0px 0px 0 white;
-}
-
-.closeX {
-  font-size: 3em;
-  text-decoration: none;
-  text-transform: lowercase;
-  text-shadow: 3px 4px 0 white;
-  text-align: right;
-  margin: 0em auto;
-  display: block;
-  cursor: pointer;
-  padding-right: 1em;
-  z-index: 999999999;
-  position: fixed;
-  right: 0;
-  transition: 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) all;
-}
-
 .right_side p.gray {
   color: #737373;
   transition: 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) all;
 }
-
-
-
-
 
 .arrowswrap {
   display: block;
@@ -896,8 +820,8 @@ contact.inner_patone.ng-enter.ng-enter-active {
   height: 35px;
   margin: auto;
   top: 98%;
-  left: 50%;
   top: calc(100% - 50px);
+  left: 50%;
   left: calc(50% - 44px);
   position: fixed;
   z-index: 9999999;
@@ -923,4 +847,56 @@ contact.inner_patone.ng-enter.ng-enter-active {
 
 .introLogo {
   margin-bottom: 55px;
+}
+
+.closeX {
+  display: block;
+  cursor: pointer;
+  z-index: 999999999;
+  position: fixed;
+}
+
+.closeX .line {
+  display: block;
+  border: 1px solid #737373;
+}
+
+.closeX .line.one {
+  background-color: #F0F8FF;
+  background-color: rgba(240, 248, 255, 0);
+  border-right: 0;
+}
+
+.closeX .line.two {
+  background-color: #F0F8FF;
+  background-color: rgba(240, 248, 255, 0);
+  border-right: 0;
+  border-top: 0;
+}
+
+.closeX .line.three {
+  background-color: #F0F8FF;
+  background-color: rgba(240, 248, 255, 0);
+  border-bottom: 0;
+}
+
+.closeX .line.four {
+  background-color: #F0F8FF;
+  background-color: rgba(240, 248, 255, 0);
+}
+
+.line.one {
+  background-color: #74d2ff;
+}
+
+.line.two {
+  background-color: #ffd74b;
+}
+
+.line.three {
+  background-color: #6fffc7;
+}
+
+.line.four {
+  background-color: #ff6969;
 }
