@@ -4,12 +4,6 @@ div,
 span,
 object,
 iframe,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
 p,
 blockquote,
 pre,
@@ -75,8 +69,105 @@ video {
   background: transparent;
 }
 
+::selection {
+  background: #ffffff;
+  /* Safari */
+}
+
+::-moz-selection {
+  background: #ffffff;
+  /* Firefox */
+}
+
+:focus {
+  outline: none;
+}
+
 body {
   line-height: 1;
+}
+
+h1 {
+  font-family: 'Old Standard TT', serif;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 10em;
+  vertical-align: baseline;
+  background: transparent;
+  font-style: italic;
+  font-weight: 200;
+  color: #ffffff;
+}
+
+h2 {
+  font-family: 'Old Standard TT', serif;
+  margin: 0;
+  margin-bottom: 0.5em;
+  padding: 0;
+  border: 0;
+  font-size: 8em;
+  vertical-align: baseline;
+  background: transparent;
+  font-style: italic;
+  font-weight: 200;
+  color: #ffffff;
+}
+
+h3 {
+  font-family: 'Old Standard TT', serif;
+  margin: 0;
+  margin-bottom: 0.5em;
+  padding: 0;
+  border: 0;
+  font-size: 6em;
+  vertical-align: baseline;
+  background: transparent;
+  font-style: italic;
+  font-weight: 200;
+  color: #ffffff;
+}
+
+h4 {
+  font-family: 'Old Standard TT', serif;
+  margin: 0;
+  margin-bottom: 0.5em;
+  padding: 0;
+  border: 0;
+  font-size: 4em;
+  vertical-align: baseline;
+  background: transparent;
+  font-style: italic;
+  font-weight: 200;
+  color: #ffffff;
+}
+
+h5 {
+  font-family: 'Old Standard TT', serif;
+  margin: 0;
+  margin-bottom: 0.5em;
+  padding: 0;
+  border: 0;
+  font-size: 2em;
+  vertical-align: baseline;
+  background: transparent;
+  font-style: italic;
+  font-weight: 200;
+  color: #ffffff;
+}
+
+h6 {
+  font-family: 'Old Standard TT', serif;
+  margin: 0;
+  margin-bottom: 0.5em;
+  padding: 0;
+  border: 0;
+  font-size: 2em;
+  vertical-align: baseline;
+  background: transparent;
+  font-style: italic;
+  font-weight: 200;
+  color: #ffffff;
 }
 
 article,
@@ -116,6 +207,7 @@ a {
   font-size: 100%;
   vertical-align: baseline;
   background: transparent;
+  color: white;
 }
 
 /* change colours to suit your needs */
@@ -173,8 +265,8 @@ p {
   transform: rotate(-90deg);
   z-index: 999999999;
   width: 100%;
-  top: 50%;
-  top: calc(50% + 10px);
+  top: -35%;
+  top: calc(-35% + 10px);
   height: auto;
   right: 50%;
   right: calc(-50% + 20px);
@@ -188,6 +280,7 @@ p {
   font-weight: 200;
   font-style: italic;
   color: white;
+  font-family: 'Old Standard TT', serif;
 }
 
 .blue {
@@ -372,6 +465,37 @@ p {
   transition: 0.8s linear all;
 }
 
+.slide.ng-enter .angular-center-container,
+.slide.ng-leave .angular-center-container,
+.slide.ng-leave .inner_patone,
+.slide.ng-enter .inner_patone {
+  transition: 0.8s linear all;
+}
+
+.slide.ng-enter .angular-center-container {
+  -webkit-animation: slideInLeft 1s;
+  animation: slideInLeft 1s;
+  /*position: absolute;
+  right: 3000px;
+  width: 100%;*/
+}
+
+.slide.ng-enter-active .angular-center-container {
+  -webkit-animation: slideInLeft 1s;
+  animation: slideInLeft 1s;
+  /*right: 0;
+  position: absolute;
+  width: 100%;*/
+}
+
+.slide.ng-enter-active .inner_patone div,
+.slide.ng-enter-active .pantone_wrap_outer,
+.slide.ng-enter-active .pantone_wrap_outer img {
+  position: absolute;
+  right: 3000px;
+  width: 100%;
+}
+
 .slide.ng-enter {
   right: 3000px;
   position: absolute;
@@ -379,6 +503,14 @@ p {
 }
 
 /* starting animations for enter */
+
+.slide.ng-enter .inner_patone,
+.slide.ng-enter .pantone_wrap_outer,
+.slide.ng-enter .pantone_wrap_outer img {
+  right: 0;
+  position: absolute;
+  width: 100%;
+}
 
 .slide.ng-enter-active {
   right: 0;
@@ -456,6 +588,10 @@ Pantone animation prev
   transition: 1.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) all;
 }
 
+.prev.ng-enter .angular-center-container {
+  position: absolute;
+}
+
 .prev.ng-enter {
   left: 100%;
   top: 10px;
@@ -478,7 +614,11 @@ Pantone animation prev
   top: 10px;
   right: 10px;
   position: absolute;
-  z-index: 1;
+  z-index: -1;
+}
+
+.prev.ng-leave .angular-center-container {
+  position: absolute;
 }
 
 /* starting animations for leave */
@@ -488,7 +628,7 @@ Pantone animation prev
   top: 10px;
   right: 10px;
   position: absolute;
-  z-index: 1;
+  z-index: -1;
 }
 
 /*
@@ -503,8 +643,8 @@ SIDE MENU
   position: fixed;
   top: 50%;
   z-index: 999999;
-  left: 10%;
-  left: calc(10% + 10px);
+  left: 3%;
+  left: calc(3% + 10px);
   cursor: pointer;
 }
 
@@ -547,11 +687,11 @@ SIDE MENU
   height: 99%;
   height: calc(100% - 20px);
   top: 10%;
-  top: calc(0 + 10px);
+  top: calc(0% + 10px);
   bottom: 0;
-  bottom: calc(0 + 10px);
+  bottom: calc(0% + 10px);
   left: 0;
-  left: calc(0 + 10px);
+  left: calc(0% + 10px);
   margin: 0;
   padding: 0;
   width: 29%;
@@ -623,7 +763,7 @@ home.inner_patone.ng-enter {
   top: 0;
   z-index: 999999;
   left: 0;
-  left: calc(0 + 10px);
+  left: calc(0% + 10px);
   cursor: pointer;
   height: 15px;
   width: 15px;
@@ -834,7 +974,7 @@ contact.inner_patone.ng-enter.ng-enter-active {
   height: 33px;
   display: inline-block;
   cursor: pointer;
-  z-index: 1;
+  z-index: 9999999999999999999999999999999;
 }
 
 .arrws.prev {

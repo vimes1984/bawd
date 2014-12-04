@@ -1,4 +1,5 @@
 'use strict';
+/*global $:false */
 angular.module('bawdApp')
   .controller('AboutCtrl', function ($scope) {
   $scope.pantones = [
@@ -14,4 +15,5 @@ angular.module('bawdApp')
   $scope.template = $scope.pantones[0].url;
   $scope.PrevNext = 'open';
   $scope.mainmenulink = '';
+  $('p::selection').css('background', '#ffffff');
 });

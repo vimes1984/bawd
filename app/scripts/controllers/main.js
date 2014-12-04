@@ -133,7 +133,7 @@ angular.module('bawdApp')
             'strokeColor': '#aaFFFF',
             'onComplete': function () {
                 setTimeout(function () {
-                    window.location = '/new_site/#/home';
+                    window.location = '/#/home';
                   }, 200);
 
               }

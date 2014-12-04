@@ -20,11 +20,9 @@ module.exports = function (grunt) {
     //csslint
     csslint: {
       all: 'app/styles/*.css',
-        options: {
-          csslintrc: '.csslintrc'
-        },
-      custom: {
-      },
+      options: {
+        csslintrc: '.csslintrc'
+      }
     },
     // Project settings
     yeoman: {
@@ -34,36 +32,36 @@ module.exports = function (grunt) {
     },
 
     // Watches files for changes and runs tasks based on the changed files
-        watch: {
-          js: {
-            files: ['<%= yeoman.app %>/scripts/{,*/}*.js'],
-            tasks: ['newer:jshint:all'],
-            options: {
-              livereload: true
-            }
-          },
-          jsTest: {
-            files: ['test/spec/{,*/}*.js'],
-            tasks: ['newer:jshint:test', 'karma']
-          },
-          styles: {
-            files: ['<%= yeoman.app %>/styles/{,*/}*.css'],
-            tasks: ['csslint', 'newer:copy:styles', 'autoprefixer']
-          },
-          gruntfile: {
-            files: ['Gruntfile.js']
-          },
-          livereload: {
-            options: {
-              livereload: '<%= connect.options.livereload %>'
-            },
-            files: [
-              '<%= yeoman.app %>/{,*/}*.html',
-              '.tmp/styles/{,*/}*.css',
-              '<%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
-            ]
-          }
+    watch: {
+      js: {
+        files: ['<%= yeoman.app %>/scripts/{,*/}*.js'],
+        tasks: ['newer:jshint:all'],
+        options: {
+          livereload: true
+        }
+      },
+      jsTest: {
+        files: ['test/spec/{,*/}*.js'],
+        tasks: ['newer:jshint:test', 'karma']
+      },
+      styles: {
+        files: ['<%= yeoman.app %>/styles/{,*/}*.css'],
+        tasks: ['csslint', 'newer:copy:styles', 'autoprefixer']
+      },
+      gruntfile: {
+        files: ['Gruntfile.js']
+      },
+      livereload: {
+        options: {
+          livereload: '<%= connect.options.livereload %>'
         },
+        files: [
+          '<%= yeoman.app %>/{,*/}*.html',
+          '.tmp/styles/{,*/}*.css',
+          '<%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
+        ]
+      }
+    },
 
     // The actual grunt server settings
     connect: {

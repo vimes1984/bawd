@@ -2,7 +2,8 @@
 
 angular.module('bawdApp')
   .controller('HomeCtrl', function ($scope) {
-	$scope.togglehideshow = true;
+  $scope.togglehideshow = true;
+
   $scope.mainmenulink = 'views/menu.html';
   $scope.templatehome = 'views/pantone-inner-home.html';
   $scope.templatecontact = 'views/pantone-inner-contact.html';

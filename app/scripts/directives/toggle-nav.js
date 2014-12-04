@@ -7,6 +7,7 @@ angular.module('bawdApp')
       restrict: 'AE',
       controller: 'MenuCtrl',
       link: function(){
+
       }
     };
   });
