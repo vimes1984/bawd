@@ -13,7 +13,7 @@ import { Component, AfterViewInit, ElementRef, input, signal, viewChild } from '
       <svg #svg
            [attr.width]="width()"
            [attr.height]="height()"
-           viewBox="0 0 699 324"
+           viewBox="0 0 699 437"
            fill="none"
            xmlns="http://www.w3.org/2000/svg">
         @for (stroke of strokes(); track $index) {
@@ -32,13 +32,19 @@ import { Component, AfterViewInit, ElementRef, input, signal, viewChild } from '
       left: 50%; top: 50%;
       transform: translate(-50%, -50%);
       z-index: 5;
+      svg {
+        /* original canvas is 699×437; scale down on small screens */
+        max-width: min(92vw, 699px);
+        max-height: 72vh;
+        height: auto;
+      }
     }
     path { opacity: 0; }
   `]
 })
 export class StrokeLogo implements AfterViewInit {
   readonly width = input<number>(699);
-  readonly height = input<number>(324);
+  readonly height = input<number>(437);
   readonly strokeWidth = 3;
   readonly host = viewChild<ElementRef<HTMLDivElement>>('host');
   readonly svg = viewChild<ElementRef<SVGSVGElement>>('svg');
@@ -87,7 +93,9 @@ export class StrokeLogo implements AfterViewInit {
         {
           duration: dur,
           delay: start,
-          easing: 'cubic-bezier(0.175, 0.885, 0.32, 1.275)',
+          // clean ease, NO back-out overshoot — a stroke that overshoots
+          // past its endpoint and retracts looks rubber-bandy, not hand-drawn
+          easing: 'cubic-bezier(0.25, 0.1, 0.25, 1)',
           fill: 'both'
         }
       ).onfinish = () => {

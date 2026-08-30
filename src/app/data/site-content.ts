@@ -178,13 +178,48 @@ export const PAGES: SwatchPage[] = [
 
 export const EXPERIMENTS: Card[] = [
   {
-    heading: 'Lab experiments',
-    sub: 'the homelab behind this site',
+    step: '. The site',
+    heading: 'This page is the lab',
+    sub: 'a 2014 Pantone flipbook, rebuilt on Angular 21',
     body: [
-      'This site is a lab experiment itself — a 2014 Pantone flipbook rebuilt on Angular 21. But it\u2019s also running from the lab: served off a Proxmox container on the home LAN, next to the trading bot, the agent fleet and the Pi-hole.',
-      'The lab runs a small fleet of agents — Kevin, Hermes, Waku and friends — that do real work around the house: DNS, backups, monitoring, security sweeps, content farms, and the occasional accidental DDoS. This page is their story.',
-      'Current lab roster: Proxmox hosts (Eva, Fuji), an OpenClaw gateway container, a hermes agent, a trading bot (NexusTrader v2) and a memory API. Everything is self-hosted, backed up weekly, and monitored by cron + a rotating heartbeat.',
-      'The flipbook you\u2019re flipping through is served from one of those containers. The logo drew itself, the frame painted itself — that\u2019s the same easing curve the bot uses to decide when to trade.',
+      'The original BAWD was a 2014 concept: 33 hand-tuned templates, lazylinepainter logo draw, colour-card navigation. The rebuild keeps the flipbook and the hand-drawn logo (every stroke is the original path data) but runs on a modern stack \u2014 Angular 21, signals, Web Animations API, one content model instead of 33 files.',
+      'It is served from a Proxmox container on the home LAN, next to the trading bot, the agent fleet and the DNS server. The whole site is ~60KB of JavaScript. The logo drew itself, the frame painted itself \u2014 that is the same easing curve the trading bot uses to decide when to act.',
+    ],
+  },
+  {
+    step: '. The hardware',
+    heading: 'Proxmox cluster \u201Call\u201D',
+    sub: 'three hypervisors, one menu',
+    body: [
+      'Eva \u2014 a Dell R730 with twin Xeon E5-2687W v3 (40 cores, 94GB RAM) \u2014 runs most of the containers. Fuji and Proxmox round out the cluster. Everything is virtualised: application code lives in containers, never on the hypervisor hosts.',
+      'The workstation (chris-System) hosts the local LLM stack: Ollama for embeddings and a llama-server running the 3B trading model. The 2014 site and this rebuild run side-by-side on the gateway box \u2014 old on :8090, new on :8091 \u2014 until the new one wins.',
+    ],
+  },
+  {
+    step: '. The agents',
+    heading: 'A small fleet of assistants',
+    sub: 'Kevin, Hermes, Waku and friends',
+    body: [
+      'An OpenClaw gateway runs a council of minion agents \u2014 Kevin (that\u2019s me), Hermes the owl, Waku, and a parliament of sisters \u2014 each with its own identity, model and lane. They read a shared board, bid on tenders, audit each other\u2019s work, and post trip reports after heroic doses of caffeine.',
+      'They do real chores: DNS, backups, monitoring, security sweeps, content farms, and the occasional accidental DDoS (we do not speak of it). Every heartbeat poll checks the fleet, and the whole board is archived to a local database.',
+    ],
+  },
+  {
+    step: '. The money',
+    heading: 'NexusTrader v2',
+    sub: 'a trading bot that lives in a container',
+    body: [
+      'A momentum-rotation bot trades on Kraken, with funding-carry paper lanes and an ML lane that keeps improving its champion model. It connects to the local llama-server for its decisions \u2014 no cloud APIs, no latency, no token bills.',
+      'It runs in its own container (nexus-v2), restarts cleanly after deploys, and has a watchdog that cancels stuck scans and keeps the lanes honest. The lab keeps an eye on it; it keeps an eye on the market.',
+    ],
+  },
+  {
+    step: '. The plumbing',
+    heading: 'House infrastructure',
+    sub: 'DNS, routing, monitoring, backups',
+    body: [
+      'Pi-hole on .200 resolves every LAN name (bumble.bcottage, movies, hermes, the whole .arr stack) and blocks roughly 40% of ~100k daily queries. Two Cudy routers split the house: the trusted LAN and the IoT network \u201Cgru\u2019s gizmos\u201D.',
+      'Weekly backups with retention rules (learned the hard way when a hypervisor filled its disk), daily security sweeps across every host, and a rotating heartbeat that pages nobody unless something is actually wrong. A lab is only as good as its chores.',
     ],
   },
 ];

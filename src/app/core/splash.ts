@@ -12,7 +12,7 @@ import { StrokeLogo } from './stroke-logo';
   imports: [RouterLink, StrokeLogo],
   template: `
     <div class="splash black" #splash>
-      <app-stroke-logo [width]="699" [height]="324" />
+      <app-stroke-logo [width]="699" [height]="437" />
       <svg class="frame" #frame
            preserveAspectRatio="none"
            xmlns="http://www.w3.org/2000/svg">
@@ -59,30 +59,37 @@ import { StrokeLogo } from './stroke-logo';
 export class Splash implements AfterViewInit {
   readonly done = output<void>();
   readonly frame = viewChild<ElementRef<SVGSVGElement>>('frame');
+  private finished = false;
 
   constructor(private router: Router) {}
 
   ngAfterViewInit() {
-    // Wait for logo paths (fetched async inside StrokeLogo). Poll briefly.
+    // Frame: starts just after the logo begins painting, drawn over ~3.5s.
+    // Navigation is guaranteed by THREE independent paths (onfinish,
+    // finished promise, absolute timeout) — the intro can never soft-lock.
     const tryFrame = () => {
       const rect = this.frame()?.nativeElement.querySelector('rect');
       if (!rect) return;
       rect.style.opacity = '1';
-      rect.animate(
+      const anim = rect.animate(
         [{ strokeDashoffset: '1000' }, { strokeDashoffset: '0' }],
-        {
-          duration: 6000,
-          easing: 'linear',
-          fill: 'both'
-        }
-      ).onfinish = () => {
-        setTimeout(() => {
-          this.done.emit();
-          this.router.navigate(['/home']);
-        }, 400);
-      };
+        { duration: 5200, easing: 'linear', fill: 'both' }
+      );
+      anim.onfinish = () => this.finish();
+      anim.finished.catch(() => this.finish()); // canceled → still proceed
     };
-    // Delay to let the logo start painting; frame overlaps the tail.
-    setTimeout(tryFrame, 900);
+    // Frame starts 1.2s in and runs 5.2s (ends 6.4s) — it must OUTLAST the
+    // logo (28 strokes ≈ 5.4s) so the final 'hands' row finishes drawing
+    // before the flip to home. Original had the same relationship.
+    setTimeout(tryFrame, 1200);
+    // Absolute backstop: whatever happens, leave the splash after 8.5s.
+    setTimeout(() => this.finish(), 8500);
+  }
+
+  private finish() {
+    if (this.finished) return;
+    this.finished = true;
+    this.done.emit();
+    this.router.navigate(['/home']);
   }
 }

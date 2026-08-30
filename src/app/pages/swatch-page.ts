@@ -1,4 +1,4 @@
-import { Component, signal, computed, AfterViewInit, ElementRef, viewChild } from '@angular/core';
+import { Component, signal, computed } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { SwatchPage } from '../data/site-content';
 import { LogoNav } from '../core/logo-nav';
@@ -8,6 +8,7 @@ import { LogoNav } from '../core/logo-nav';
 // services_pantone_*, projects_pantone_*) — v2 collapses them into this
 // component + the content model, keyed by route data. Prev/next arrow
 // navigation ported from the pantone-menu directive (prevpro/nextpro).
+// Page enter/leave motion is handled by the route transition in App.
 
 @Component({
   selector: 'app-swatch-page',
@@ -21,7 +22,7 @@ import { LogoNav } from '../core/logo-nav';
         <div class="arrws next" (click)="next()" aria-label="Next card">›</div>
       </div>
 
-      <div class="centered" #centered>
+      <div class="centered">
         @if (currentCard(); as card) {
           <h2>{{ card.step || page().kicker }}</h2>
           <h5>{{ card.heading }}</h5>
@@ -59,9 +60,7 @@ import { LogoNav } from '../core/logo-nav';
       align-items: center; justify-content: center;
       height: 100%; text-align: center;
       padding: 0 12%;
-      transform: translateX(3000px);   /* sweep-in start (2014 signature) */
     }
-    .centered.in { transform: translateX(0); }
     h2 { color: rgba(0,0,0,0.75); }
     h5 { color: rgba(0,0,0,0.7); }
     .card-sub { color: rgba(0,0,0,0.55); margin-bottom: 0.75rem; }
@@ -91,27 +90,11 @@ import { LogoNav } from '../core/logo-nav';
     }
   `]
 })
-export class SwatchPageComponent implements AfterViewInit {
+export class SwatchPageComponent {
   protected readonly page = computed<SwatchPage>(() => this.route.snapshot.data['page']);
   protected readonly idx = signal(0);
-  readonly centered = viewChild<ElementRef<HTMLDivElement>>('centered');
 
   constructor(private route: ActivatedRoute) {}
-
-  ngAfterViewInit() {
-    // Sweep the content in from 3000px — the 2014 signature move.
-    const el = this.centered()?.nativeElement;
-    if (!el) return;
-    el.classList.add('in');
-    el.animate(
-      [{ transform: 'translateX(3000px)' }, { transform: 'translateX(0)' }],
-      {
-        duration: 900,
-        easing: 'cubic-bezier(0.175, 0.885, 0.32, 1.275)',
-        fill: 'both'
-      }
-    );
-  }
 
   protected readonly currentCard = computed(() => {
     const cards = this.page().cards;

@@ -1,0 +1,17 @@
+:host {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.stage {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* Every routed page is a full-viewport card; the stage keeps them stacked
+   so :leave can slide out while :enter slides in underneath/over it.
+   NOTE: lives in global styles.scss (not app.scss) because Angular scopes
+   component styles to [_ngcontent-*] which routed component hosts don't carry. */
