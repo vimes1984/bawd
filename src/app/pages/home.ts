@@ -10,10 +10,10 @@ import { LogoNav } from '../core/logo-nav';
 // width/height animation, so nothing reflows and nothing jumps.
 
 const ICONS: Record<string, string> = {
-  about: 'assets/icons/whoarewe.png',
-  services: 'assets/icons/services.png',
-  projects: 'assets/icons/projects.png',
-  contact: 'assets/icons/contact.png',
+  about: 'assets/icons/whoarewe.svg',
+  services: 'assets/icons/services.svg',
+  projects: 'assets/icons/projects.svg',
+  contact: 'assets/icons/contact.svg',
 };
 
 @Component({
@@ -61,7 +61,7 @@ const ICONS: Record<string, string> = {
     }
     .chip {
       display: flex; align-items: center; justify-content: center;
-      border-radius: 3px;
+      /* sharp corners — 2014 design spec, no border radius */
       border: 1px solid rgba(255,255,255,0.22);
       box-shadow: 0 12px 32px rgba(0,0,0,0.35);
       /* hidden start — bloomed class transitions to visible (transform only,

@@ -68,8 +68,7 @@ import { LogoNav } from '../core/logo-nav';
       max-width: 640px;
       margin: 0 auto 2.2rem;
       padding: 1.6rem 2rem 1.4rem;
-      border: 1px solid rgba(170,255,255,0.28);
-      border-radius: 3px;
+      border: 1px solid rgba(170,255,255,0.28);   /* sharp corners — no radius */
       background: rgba(255,255,255,0.04);
       .step {
         font-size: 0.85rem; letter-spacing: 0.18em;
