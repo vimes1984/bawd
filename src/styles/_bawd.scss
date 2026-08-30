@@ -1,0 +1,212 @@
+// BAWD v2 — base styles (port of 2014 main.css, modernized, no vendor fallbacks needed)
+
+@use './tokens';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  overflow: hidden;          // THE BROWSER IS THE PAGE
+  background: tokens.$pantone-black;
+  font-family: tokens.$font-body;
+}
+
+::selection { background: #fff; }
+:focus { outline: none; }
+
+// ── Editorial type (10em headline scale, Old Standard TT italic) ────────
+h1, h2, h3, h4, h5, h6 {
+  font-family: tokens.$font-display;
+  font-style: italic;
+  font-weight: 200;
+  color: #fff;
+  margin: 0;
+  padding: 0;
+}
+h1 { font-size: clamp(4rem, 10vw, 10em); line-height: 0.95; }
+h2 { font-size: clamp(3rem, 8vw, 8em); margin-bottom: 0.5em; }
+h3 { font-size: clamp(2.4rem, 6vw, 6em); margin-bottom: 0.5em; }
+h4 { font-size: clamp(2rem, 4.5vw, 4em); margin-bottom: 0.5em; }
+h5 { font-size: 2em; margin-bottom: 0.75em; color: #fff; }
+h6 { font-size: 1.6em; }
+
+body {
+  line-height: 1.5;
+  color: #fff;
+  font-weight: 400;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255,255,255,0.35);
+  &:hover { border-bottom-color: #fff; }
+}
+
+// ── Page shell ──────────────────────────────────────────────────────────
+.page_cont_wrap {
+  position: fixed;
+  inset: 0;
+}
+.page_container {
+  width: 100%;
+  height: 100%;
+}
+
+// ── Route enter/leave choreography (ngAnimate → CSS transitions) ────────
+.container {
+  position: absolute;
+  inset: 0;
+}
+.slide {
+  transition: transform tokens.$dur-sweep tokens.$ease-enter, opacity 400ms ease;
+}
+.slide.ng-enter {
+  transform: translateX(tokens.$sweep-start);
+  opacity: 0;
+}
+.slide.ng-enter.ng-enter-active {
+  transform: translateX(0);
+  opacity: 1;
+}
+.slide.ng-leave {
+  transform: translateX(0);
+  opacity: 1;
+}
+.slide.ng-leave.ng-leave-active {
+  transform: translateX(calc(-1 * tokens.$sweep-start));
+  opacity: 0;
+}
+
+// ── Pantone stage (per-section full-bleed colour) ───────────────────────
+.pantonebg { position: relative; width: 100%; height: 100%; }
+
+.blue   { background: tokens.$pantone-blue; }
+.green  { background: tokens.$pantone-green; }
+.red    { background: tokens.$pantone-red; }
+.yellow { background: tokens.$pantone-yellow; }
+.black  { background: tokens.$pantone-black; }
+
+// ── Right-edge vertical label ───────────────────────────────────────────
+.right_side {
+  position: fixed;
+  right: 1.5rem;
+  top: 50%;
+  transform: translateY(-50%) rotate(90deg);
+  transform-origin: center;
+  p {
+    font-family: tokens.$font-display;
+    font-style: italic;
+    font-size: 1.4rem;
+    letter-spacing: 0.15em;
+    white-space: nowrap;
+    color: #fff;
+  }
+}
+
+// ── Centered content block ──────────────────────────────────────────────
+centered, .centered {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  text-align: center;
+  padding: 0 12%;
+}
+.pantone_text {
+  max-width: 560px;
+  font-size: 1.15rem;
+  font-weight: 500;
+  line-height: 1.65;
+  color: rgba(255,255,255,0.92);
+  text-shadow: 0 1px 2px rgba(0,0,0,0.12);
+  margin: 0.5rem 0;
+}
+
+// ── Swatch bloom (15px → 250px on click/route) ─────────────────────────
+.pantone_wrap_outer {
+  transition: all tokens.$dur-bloom tokens.$ease-enter;
+  cursor: pointer;
+}
+.pantone_wrap_inner { transition: all tokens.$dur-bloom tokens.$ease-enter; }
+.pantone {
+  transition: all tokens.$dur-bloom tokens.$ease-enter;
+  img { width: 100%; height: 100%; object-fit: contain; }
+}
+
+// ── Nav toggle (3-square logo, fixed corner cluster) ────────────────────
+.togglenav {
+  position: fixed;
+  top: 50%;
+  left: 3%;
+  transform: translateY(-50%);
+  z-index: 999;
+}
+.toggle-nav {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px;
+  cursor: pointer;
+  .line {
+    width: 18px;
+    height: 18px;
+    border: 2px solid #fff;
+    transition: background 200ms tokens.$ease-enter;
+    &:nth-child(1) { border-right: none; border-bottom: none; }
+    &:nth-child(2) { border-bottom: none; }
+    &:nth-child(3) { border-right: none; }
+  }
+  &:hover .line { background: #fff; }
+}
+
+// ── Full-height nav panel (opens from left, width 29%) ──────────────────
+.nav-panel {
+  position: fixed;
+  top: 0; left: 0; bottom: 0;
+  width: tokens.$nav-panel-width;
+  background: #fff;
+  color: #000;
+  transform: translateX(-100%);
+  transition: transform 400ms tokens.$ease-enter;
+  z-index: 1000;
+  &.open { transform: translateX(0); }
+  .closeX {
+    position: absolute;
+    top: 1.5rem; right: 1.5rem;
+    font-size: 2rem;
+    cursor: pointer;
+    color: #000;
+  }
+  .nav-links {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    padding: 0 3rem;
+    gap: 0.4rem;
+    a {
+      font-family: tokens.$font-display;
+      font-style: italic;
+      font-size: 3em;
+      color: #000;
+      text-shadow: 3px 4px 0 #fff;   // paper-cutout lift
+      border: none;
+      transition: text-shadow 150ms tokens.$ease-enter;
+      &:hover, &.active { text-shadow: 0 0 0 #fff; }
+    }
+  }
+}
+
+// ── Reduced motion: collapse everything (Crann Grá rule) ────────────────
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}

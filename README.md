@@ -1,25 +1,59 @@
-<h1>B.A.W.D</h1>
-<p>This is my personal website feel free to use distribute as you see fit. 
-It's  built using yeoman, grunt &amp; bower</p>
-<p>version: 0.0.1 </p> 
-<h2>Dependencies:</h2>
-<h3>dependencies:</h3> 
-<ul>
-	<li>angular: 1.2.6,</li>
-	<li>json3: ~3.2.6,</li>
-	<li>es5-shim: ~2.1.0,</li>
-	<li>jquery: ~1.10.2,</li>
-	<li>angular-cookies: 1.2.6,</li>
-	<li>angular-sanitize: 1.2.6,</li>
-	<li>angular-route: 1.2.6,</li>
-	<li>angular-animate: 1.2.11,</li>
-	<li>lazy-line-painter: https://github.com/camoconnell/lazy-line-painter.git#~1.4.1,</li>
-	<li>raphael: https://github.com/DmitryBaranovskiy/raphael.git#~2.1.2</li>
-</ul>
-<h3>devDependencies:</h3> 
-<ul>
-	<li>angular-mocks: 1.2.6,</li>
-	<li>angular-scenario: 1.2.6</li>
-</ul>
-<h3>TO DO:</h3>
-Write unit tests 
+# BawdV2
+
+This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.22.
+
+## Development server
+
+To start a local development server, run:
+
+```bash
+ng serve
+```
+
+Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+
+## Code scaffolding
+
+Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+
+```bash
+ng generate component component-name
+```
+
+For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+
+```bash
+ng generate --help
+```
+
+## Building
+
+To build the project run:
+
+```bash
+ng build
+```
+
+This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+
+## Running unit tests
+
+To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+
+```bash
+ng test
+```
+
+## Running end-to-end tests
+
+For end-to-end (e2e) testing, run:
+
+```bash
+ng e2e
+```
+
+Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+
+## Additional Resources
+
+For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.

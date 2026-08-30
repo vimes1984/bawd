@@ -1,0 +1,27 @@
+// BAWD v2 — Design Tokens (ported from the 2014 Pantone flipbook)
+// Signature easing is the brand: cubic-bezier(0.175,.885,.32,1.275) — back-out spring.
+
+// ── Pantone swatch palette (the five cards) ─────────────────────────────
+$pantone-blue:   #74d2ff;   // Services
+$pantone-green:  #6fffc7;   // Contact
+$pantone-red:    #ff6969;   // About
+$pantone-yellow: #ffd74b;   // Projects
+$pantone-black:  #000000;   // Splash / logo stage
+
+// ── Typography ──────────────────────────────────────────────────────────
+$font-display: 'Old Standard TT', Georgia, serif;   // 10em italic editorial
+$font-body:    'Quicksand', 'Segoe UI', sans-serif; // 700 weight geometric
+
+// ── Motion (the signature) ──────────────────────────────────────────────
+$ease-snap: cubic-bezier(0.175, 0.885, 0.32, 1.275); // THE easing — overshoot & settle
+$ease-enter: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+$dur-bloom: 600ms;
+$dur-sweep: 900ms;
+$dur-logo: 200ms;    // per-stroke draw duration (from original pathObj)
+$dur-frame: 6000ms;  // fase4 viewport frame draw (original)
+
+// ── Layout constants (from original main.js) ────────────────────────────
+$swatch-min: 15px;
+$swatch-max: 250px;
+$sweep-start: 3000px;
+$nav-panel-width: 29%;
