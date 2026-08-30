@@ -52,8 +52,15 @@ import { LogoNav } from '../core/logo-nav';
     }
     .centered {
       display: flex; flex-direction: column;
-      align-items: center; justify-content: center;
-      min-height: 100%; text-align: center;
+      align-items: center;
+      justify-content: flex-start;   /* override global .centered center */
+      height: auto;                  /* override global height:100% — let it grow */
+      min-height: 100%;
+      padding: 0;                    /* override global 0 12% — .scroll pads */
+      text-align: center;
+      /* Top-aligned on purpose: a fixed-height flex column with
+         justify-content:center clips overflow at the top (unreachable).
+         A lab notebook scrolls; the top must always be reachable. */
     }
     h2 { color: #fff; }
     h5 { color: rgba(255,255,255,0.6); margin-bottom: 1.5rem; }
