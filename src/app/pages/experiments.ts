@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, AfterViewInit, ElementRef, viewChild } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { EXPERIMENTS } from '../data/site-content';
 import { LogoNav } from '../core/logo-nav';
@@ -12,7 +12,7 @@ import { LogoNav } from '../core/logo-nav';
   template: `
     <section class="pantonebg black">
       <section class="right_side"><p>Build a Web doctor</p></section>
-      <div class="centered">
+      <div class="centered" #centered>
         <h2>{{ experiments[0].heading }}</h2>
         <h5>{{ experiments[0].sub }}</h5>
         @for (p of experiments[0].body; track $index) {
@@ -39,7 +39,9 @@ import { LogoNav } from '../core/logo-nav';
       display: flex; flex-direction: column;
       align-items: center; justify-content: center;
       height: 100%; text-align: center; padding: 0 12%;
+      transform: translateX(3000px);   /* sweep-in start */
     }
+    .centered.in { transform: translateX(0); }
     h2 { color: #fff; }
     h5 { color: rgba(255,255,255,0.6); }
     .pantone_text {
@@ -57,6 +59,21 @@ import { LogoNav } from '../core/logo-nav';
     }
   `]
 })
-export class ExperimentsPage {
+export class ExperimentsPage implements AfterViewInit {
   readonly experiments = EXPERIMENTS;
+  readonly centered = viewChild<ElementRef<HTMLDivElement>>('centered');
+
+  ngAfterViewInit() {
+    const el = this.centered()?.nativeElement;
+    if (!el) return;
+    el.classList.add('in');
+    el.animate(
+      [{ transform: 'translateX(3000px)' }, { transform: 'translateX(0)' }],
+      {
+        duration: 900,
+        easing: 'cubic-bezier(0.175, 0.885, 0.32, 1.275)',
+        fill: 'both'
+      }
+    );
+  }
 }

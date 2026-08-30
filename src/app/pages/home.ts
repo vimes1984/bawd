@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, AfterViewInit, ElementRef, viewChild } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { PAGES } from '../data/site-content';
 import { LogoNav } from '../core/logo-nav';
@@ -14,7 +14,7 @@ import { LogoNav } from '../core/logo-nav';
     <section class="pantonebg black">
       <section class="right_side"><p>Build a Web doctor</p></section>
 
-      <div class="chip-grid">
+      <div class="chip-grid" #grid>
         @for (p of pages; track p.slug) {
           <a class="chip {{ p.pantone }}" [routerLink]="[p.route]">
             <span class="chip-label">{{ p.kicker }}</span>
@@ -50,13 +50,19 @@ import { LogoNav } from '../core/logo-nav';
     }
     .chip {
       display: flex; align-items: center; justify-content: center;
-      width: 250px; height: 250px;
+      width: 15px; height: 15px;          /* start small — bloom target below */
       transition: transform 600ms cubic-bezier(0.175,0.885,0.32,1.275);
       &:hover { transform: scale(1.06); }
       .chip-label {
         font-family: 'Old Standard TT', serif;
         font-style: italic; font-size: 3rem; color: #fff;
         text-shadow: 2px 3px 0 rgba(0,0,0,0.25);
+        opacity: 0;
+        transition: opacity 400ms ease 600ms;
+      }
+      &.bloomed {
+        width: 250px; height: 250px;
+        .chip-label { opacity: 1; }
       }
     }
     .blue   { background: #74d2ff; }
@@ -71,10 +77,34 @@ import { LogoNav } from '../core/logo-nav';
     }
 
     @media (max-width: 900px) {
-      .chip { width: 140px; height: 140px; .chip-label { font-size: 1.8rem; } }
+      .chip { width: 15px; height: 15px; .chip-label { font-size: 1.8rem; } }
+      .chip.bloomed { width: 140px; height: 140px; }
     }
   `]
 })
-export class HomePage {
+export class HomePage implements AfterViewInit {
   readonly pages = PAGES;
+  readonly grid = viewChild<ElementRef<HTMLDivElement>>('grid');
+
+  ngAfterViewInit() {
+    const grid = this.grid()?.nativeElement;
+    if (!grid) return;
+    const chips = Array.from(grid.querySelectorAll('.chip')) as HTMLElement[];
+    chips.forEach((chip, i) => {
+      // Staggered bloom: 15×15 → 250×250 with the signature easing.
+      chip.animate(
+        [
+          { width: '15px', height: '15px' },
+          { width: '250px', height: '250px' }
+        ],
+        {
+          duration: 600,
+          delay: 150 + i * 140,
+          easing: 'cubic-bezier(0.175, 0.885, 0.32, 1.275)',
+          fill: 'forwards'
+        }
+      );
+      chip.classList.add('bloomed');
+    });
+  }
 }

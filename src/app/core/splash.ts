@@ -16,8 +16,8 @@ import { StrokeLogo } from './stroke-logo';
       <svg class="frame" #frame
            preserveAspectRatio="none"
            xmlns="http://www.w3.org/2000/svg">
-        <rect x="6" y="6" [attr.width]="'calc(100% - 12px)'" [attr.height]="'calc(100% - 12px)'"
-              fill="none" stroke="#aaffff" [attr.stroke-width]="25" pathLength="1000" />
+        <rect x="6" y="6"
+              fill="none" stroke="#aaffff" stroke-width="25" pathLength="1000" />
       </svg>
       <div class="skip">
         <a [routerLink]="['/home']">skip intro →</a>
@@ -35,6 +35,9 @@ import { StrokeLogo } from './stroke-logo';
       width: 100%; height: 100%;
     }
     .frame rect {
+      /* SVG2 geometry: CSS calc is valid here (attribute calc is not) */
+      width: calc(100% - 12px);
+      height: calc(100% - 12px);
       stroke-dasharray: 1000;
       stroke-dashoffset: 1000;
       opacity: 0;

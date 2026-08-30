@@ -1,4 +1,4 @@
-import { Component, AfterViewInit, ElementRef, input, viewChild } from '@angular/core';
+import { Component, AfterViewInit, ElementRef, input, signal, viewChild } from '@angular/core';
 
 // BAWD v2 — StrokeLogo
 // Replaces lazylinepainter + raphael (2014) with native SVG stroke-dashoffset
@@ -16,7 +16,7 @@ import { Component, AfterViewInit, ElementRef, input, viewChild } from '@angular
            viewBox="0 0 699 324"
            fill="none"
            xmlns="http://www.w3.org/2000/svg">
-        @for (stroke of strokes; track $index) {
+        @for (stroke of strokes(); track $index) {
           <path [attr.d]="stroke.path"
                 stroke="#aaffff"
                 [attr.stroke-width]="strokeWidth"
@@ -43,14 +43,14 @@ export class StrokeLogo implements AfterViewInit {
   readonly host = viewChild<ElementRef<HTMLDivElement>>('host');
   readonly svg = viewChild<ElementRef<SVGSVGElement>>('svg');
 
-  protected strokes: { path: string; duration: number }[] = [];
+  protected readonly strokes = signal<{ path: string; duration: number }[]>([]);
   private done = false;
 
   async ngAfterViewInit() {
     const res = await fetch('logo-paths.json');
     const data = await res.json();
-    this.strokes = data.fase1.strokepath;
-    // Force CD to render paths, then animate after a tick.
+    this.strokes.set(data.fase1.strokepath);
+    // Paths now render via signal → CD runs. Animate after a double rAF.
     requestAnimationFrame(() => requestAnimationFrame(() => this.paint()));
   }
 
@@ -70,7 +70,8 @@ export class StrokeLogo implements AfterViewInit {
 
     let cumulative = 0;
     const anims = paths.map((p, i) => {
-      const dur = (this.strokes[i]?.duration ?? 200) * 0.4; // 2014 ran slow; tighten
+      // Original 2014 durations, unscaled — the draw should feel hand-made.
+      const dur = this.strokes()[i]?.duration ?? 200;
       const start = cumulative;
       cumulative += dur * 0.85;
       return { el: p, dur, start };

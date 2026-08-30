@@ -178,11 +178,13 @@ export const PAGES: SwatchPage[] = [
 
 export const EXPERIMENTS: Card[] = [
   {
-    heading: 'This site is the experiment',
-    sub: 'Angular 21 rebuild',
+    heading: 'Lab experiments',
+    sub: 'the homelab behind this site',
     body: [
-      'The Pantone flipbook you\u2019re flipping through was hand-built in 2014 on AngularJS. This version is a full rebuild \u2014 same soul, modern stack.',
-      'Stroke-drawn logo, signature easing, no jQuery, real routes. The experiment is: can a 2014 concept still feel designed in 2026?',
+      'This site is a lab experiment itself — a 2014 Pantone flipbook rebuilt on Angular 21. But it\u2019s also running from the lab: served off a Proxmox container on the home LAN, next to the trading bot, the agent fleet and the Pi-hole.',
+      'The lab runs a small fleet of agents — Kevin, Hermes, Waku and friends — that do real work around the house: DNS, backups, monitoring, security sweeps, content farms, and the occasional accidental DDoS. This page is their story.',
+      'Current lab roster: Proxmox hosts (Eva, Fuji), an OpenClaw gateway container, a hermes agent, a trading bot (NexusTrader v2) and a memory API. Everything is self-hosted, backed up weekly, and monitored by cron + a rotating heartbeat.',
+      'The flipbook you\u2019re flipping through is served from one of those containers. The logo drew itself, the frame painted itself — that\u2019s the same easing curve the bot uses to decide when to trade.',
     ],
   },
 ];
