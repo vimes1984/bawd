@@ -4,9 +4,9 @@ import { PAGES } from '../data/site-content';
 import { LogoNav } from '../core/logo-nav';
 
 // BAWD v2 — Home: the Pantone chip grid, restored to the 2014 choreography.
-// Four colour cards in a 2×2 grid, each carrying the original hand-drawn
-// white icon (who are we / services / projects / contact) instead of a
-// letter. Entrance is a staggered transform-scale bloom + fade — no
+// Four colour cards in a 2×2 grid, each carrying a flat line icon + a word
+// label beneath it (about / services / projects / contact). Entrance is a
+// staggered transform-scale bloom + fade — no
 // width/height animation, so nothing reflows and nothing jumps.
 
 const ICONS: Record<string, string> = {
@@ -27,6 +27,7 @@ const ICONS: Record<string, string> = {
         @for (p of pages; track p.slug) {
           <a class="chip {{ p.pantone }}" [routerLink]="[p.route]">
             <img [src]="icons[p.slug]" [alt]="p.title" />
+            <span class="chip-title">{{ p.slug }}</span>
           </a>
         }
       </div>
@@ -60,10 +61,14 @@ const ICONS: Record<string, string> = {
       justify-content: center;
     }
     .chip {
-      display: flex; align-items: center; justify-content: center;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      gap: 1rem;
+      padding: 1rem;
       /* sharp corners — 2014 design spec, no border radius */
       border: 1px solid rgba(255,255,255,0.22);
       box-shadow: 0 12px 32px rgba(0,0,0,0.35);
+      text-decoration: none;
       /* hidden start — bloomed class transitions to visible (transform only,
          no layout reflow = no wacky jumping) */
       opacity: 0;
@@ -76,11 +81,21 @@ const ICONS: Record<string, string> = {
         border-color: rgba(255,255,255,0.55);
       }
       img {
-        height: 46%;
+        height: 40%;
         width: auto;
         max-width: 68%;
         object-fit: contain;
         filter: drop-shadow(2px 3px 0 rgba(0,0,0,0.3));
+      }
+      .chip-title {
+        font-family: 'Old Standard TT', serif;
+        font-style: italic;
+        font-size: 1.35rem;
+        line-height: 1;
+        color: #fff;
+        text-transform: lowercase;
+        letter-spacing: 0.03em;
+        text-shadow: 2px 2px 0 rgba(0,0,0,0.3);
       }
       &.bloomed { opacity: 1; transform: scale(1); }
     }
@@ -101,7 +116,9 @@ const ICONS: Record<string, string> = {
         grid-template-rows: repeat(2, 140px);
         gap: 1.1rem;
       }
-      .chip img { height: 42%; }
+      .chip { gap: 0.55rem; padding: 0.4rem; }
+      .chip img { height: 40%; }
+      .chip .chip-title { font-size: 1rem; }
     }
   `]
 })
