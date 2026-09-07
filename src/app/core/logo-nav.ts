@@ -2,13 +2,13 @@ import { Component, signal, HostListener } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 
 // BAWD v2 — LogoNav: the 3-square logo cluster (fixed, top:50% left:3%) that
-// opens the full-height white sidebar. Restored to the 2014 menu.html spec:
+// opens the full-height sidebar. Restored to the 2014 menu.html spec:
 //   · grey BAWD wordmark header, top-left
 //   · "X" close, top-right
-//   · centred 2×2 grid of mini Pantone cards (services/projects/contact/about)
-//     carrying the original white icons (now SVG)
 //   · vertical "Build a Web doctor" tagline on the right edge
-//   · v2 addition: slim home + experiments links under the grid
+//   · slim home + experiments links, bottom centre
+//   · solid dark (#141414) panel to sit on the black canvas (2026-09-07 Chris:
+//     remove nav-grid mini cards; background solid, not white)
 // ESC closes.
 
 @Component({
@@ -29,21 +29,6 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
         </a>
       </header>
       <p class="closeX" (click)="close()">X</p>
-
-      <div class="nav-grid">
-        <a class="mini-card blue" routerLink="/services" (click)="close()">
-          <img src="assets/icons/services.svg" alt="services" />
-        </a>
-        <a class="mini-card yellow" routerLink="/projects" (click)="close()">
-          <img src="assets/icons/projects.svg" alt="projects" />
-        </a>
-        <a class="mini-card green" routerLink="/contact" (click)="close()">
-          <img src="assets/icons/contact.svg" alt="contact" />
-        </a>
-        <a class="mini-card red" routerLink="/about" (click)="close()">
-          <img src="assets/icons/whoarewe.svg" alt="about" />
-        </a>
-      </div>
 
       <nav class="nav-links">
         <a routerLink="/home" routerLinkActive="active" (click)="close()">home</a>
@@ -78,11 +63,12 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
     .nav-panel {
       position: fixed; top: 10px; left: 10px; bottom: 10px;
       width: 29%;
-      background: #fff;
+      background: #141414;
       transform: translateX(calc(-100% - 20px));
       transition: transform 400ms cubic-bezier(0.175,0.885,0.32,1.275);
       z-index: 1000;
       box-shadow: 12px 0 40px rgba(0,0,0,0.35);
+      border: 1px solid rgba(255,255,255,0.09);
       overflow: hidden;
       &.open { transform: translateX(0); }
 
@@ -93,31 +79,9 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
       }
       .closeX {
         position: absolute; top: 1.25rem; right: 1.75rem;
-        font-size: 1.6rem; cursor: pointer; color: #000;
+        font-size: 1.6rem; cursor: pointer; color: #fff;
         z-index: 2;
-        &:hover { color: #666; }
-      }
-
-      .nav-grid {
-        position: absolute; inset: 0;
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 130px));
-        grid-template-rows: repeat(2, minmax(0, 130px));
-        gap: 0.9rem;
-        align-content: center;
-        justify-content: center;
-        padding: 0 1.2rem;
-        .mini-card {
-          display: flex; align-items: center; justify-content: center;
-          border: 1px solid rgba(255,255,255,0.35);
-          transition: transform 200ms cubic-bezier(0.175,0.885,0.32,1.275);
-          img { height: 42%; width: auto; max-width: 62%; object-fit: contain; }
-          &:hover { transform: scale(1.07); }
-        }
-        .blue   { background: #74d2ff; }
-        .green  { background: #6fffc7; }
-        .red    { background: #ff6969; }
-        .yellow { background: #ffd74b; }
+        &:hover { color: #aaa; }
       }
 
       .nav-links {
@@ -126,11 +90,11 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
         a {
           font-family: 'Old Standard TT', serif;
           font-style: italic; font-size: 1.15rem;
-          color: #000;
-          text-shadow: 2px 2px 0 #fff;
+          color: #fff;
+          text-shadow: 2px 2px 0 rgba(0,0,0,0.55);
           border-bottom: 1px solid transparent;
           transition: text-shadow 150ms cubic-bezier(0.175,0.885,0.32,1.275);
-          &:hover, &.active { text-shadow: 0 0 0 #fff; border-bottom-color: #000; }
+          &:hover, &.active { text-shadow: 0 0 0 rgba(0,0,0,0); border-bottom-color: #fff; }
         }
       }
 
@@ -142,7 +106,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
           font-family: 'Old Standard TT', serif;
           font-style: italic; font-size: 1rem;
           letter-spacing: 0.18em; white-space: nowrap;
-          color: #ddd;
+          color: #777;
         }
       }
     }
