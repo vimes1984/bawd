@@ -29,7 +29,13 @@ import { LogoNav } from '../core/logo-nav';
           <h5>{{ card.heading }}</h5>
           @if (card.sub) { <h6 class="card-sub">{{ card.sub }}</h6> }
           @for (p of card.body; track $index) {
-            <p class="pantone_text">{{ p }}</p>
+            @if (emailOf(p); as addr) {
+              <p class="pantone_text">
+                Email: <a class="email-link" [href]="'mailto:' + addr">{{ addr }}</a>
+              </p>
+            } @else {
+              <p class="pantone_text">{{ p }}</p>
+            }
           }
         }
       </div>
@@ -70,6 +76,12 @@ import { LogoNav } from '../core/logo-nav';
       font-size: 1.15rem; font-weight: 500; line-height: 1.65;
       color: rgba(0,0,0,0.85);
       margin: 0.5rem 0;
+    }
+    .email-link {
+      color: inherit;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      &:hover { background: #000; color: #fff; }
     }
 
     .arrowswrap {
@@ -117,5 +129,11 @@ export class SwatchPageComponent {
   }
   next() {
     this.idx.update((i) => (i + 1) % this.page().cards.length);
+  }
+
+  /** Detect "Email: x@y.z" body lines and pull the bare address out. */
+  emailOf(p: string): string | null {
+    const m = p.match(/^Email:\s*([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})$/);
+    return m ? m[1] : null;
   }
 }
