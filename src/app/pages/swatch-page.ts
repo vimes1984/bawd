@@ -1,5 +1,6 @@
 import { Component, signal, computed } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { HostListener } from '@angular/core';
 import { SwatchPage } from '../data/site-content';
 import { LogoNav } from '../core/logo-nav';
 
@@ -95,6 +96,15 @@ export class SwatchPageComponent {
   protected readonly idx = signal(0);
 
   constructor(private route: ActivatedRoute) {}
+
+  // Keyboard flip — arrows mirror the on-screen ‹ › controls (2014 flipbook).
+  @HostListener('document:keydown', ['$event'])
+  onKeydown(e: KeyboardEvent) {
+    const tag = (e.target as HTMLElement)?.tagName;
+    if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT') return;
+    if (e.key === 'ArrowLeft') { e.preventDefault(); this.prev(); }
+    else if (e.key === 'ArrowRight') { e.preventDefault(); this.next(); }
+  }
 
   protected readonly currentCard = computed(() => {
     const cards = this.page().cards;
