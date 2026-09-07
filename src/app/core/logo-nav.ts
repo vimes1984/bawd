@@ -6,7 +6,8 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 //   · grey BAWD wordmark header, top-left
 //   · "X" close, top-right
 //   · vertical "Build a Web doctor" tagline on the right edge
-//   · slim home + experiments links, bottom centre
+//   · full nav list (home/services/projects/contact/about/experiments), vertically
+//     centred and inset from the right edge so underlines clear the tagline
 //   · solid dark (#141414) panel to sit on the black canvas (2026-09-07 Chris:
 //     remove nav-grid mini cards; background solid, not white)
 // ESC closes.
@@ -32,6 +33,10 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 
       <nav class="nav-links">
         <a routerLink="/home" routerLinkActive="active" (click)="close()">home</a>
+        <a routerLink="/services" routerLinkActive="active" (click)="close()">services</a>
+        <a routerLink="/projects" routerLinkActive="active" (click)="close()">projects</a>
+        <a routerLink="/contact" routerLinkActive="active" (click)="close()">contact</a>
+        <a routerLink="/about" routerLinkActive="active" (click)="close()">about</a>
         <a routerLink="/experiments" routerLinkActive="active" (click)="close()">experiments</a>
       </nav>
 
@@ -85,12 +90,15 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
       }
 
       .nav-links {
-        position: absolute; bottom: 2.2rem; left: 0; right: 0;
-        display: flex; justify-content: center; gap: 1.6rem;
+        position: absolute; top: 50%; left: 0; right: 4.5rem;
+        transform: translateY(-50%);
+        display: flex; flex-direction: column;
+        align-items: center; gap: 0.7rem;
         a {
           font-family: 'Old Standard TT', serif;
           font-style: italic; font-size: 1.15rem;
           color: #fff;
+          line-height: 1.05;
           text-shadow: 2px 2px 0 rgba(0,0,0,0.55);
           border-bottom: 1px solid transparent;
           transition: text-shadow 150ms cubic-bezier(0.175,0.885,0.32,1.275);
@@ -99,12 +107,12 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
       }
 
       .right_side {
-        position: absolute; right: 0.6rem; top: 50%;
-        transform: translateY(-50%) rotate(90deg);
-        transform-origin: center;
+        position: absolute; right: 1.1rem; top: 50%;
+        transform: translateY(-50%);
         p {
           font-family: 'Old Standard TT', serif;
           font-style: italic; font-size: 1rem;
+          writing-mode: vertical-rl;
           letter-spacing: 0.18em; white-space: nowrap;
           color: #777;
         }
