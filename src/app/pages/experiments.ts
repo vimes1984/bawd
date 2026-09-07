@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal, computed, HostListener } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { EXPERIMENTS } from '../data/site-content';
 import { LogoNav } from '../core/logo-nav';
@@ -13,11 +13,17 @@ import { LogoNav } from '../core/logo-nav';
   template: `
     <section class="pantonebg black">
       <section class="right_side"><p>Build a Web doctor</p></section>
+
+      <div class="arrowswrap">
+        <div class="arrws prev" (click)="prev()" aria-label="Previous experiment">‹</div>
+        <div class="arrws next" (click)="next()" aria-label="Next experiment">›</div>
+      </div>
+
       <div class="scroll">
         <div class="centered">
           <h2>Lab experiments</h2>
           <h5>the homelab behind this site</h5>
-          @for (card of experiments; track $index) {
+          @if (currentCard(); as card) {
             <article class="lab-card">
               @if (card.step) { <h6 class="step">{{ card.step }}</h6> }
               <h3>{{ card.heading }}</h3>
@@ -48,7 +54,7 @@ import { LogoNav } from '../core/logo-nav';
     .scroll {
       position: absolute; inset: 0;
       overflow-y: auto;                    /* lab notebook scrolls */
-      padding: 6vh 6vw;
+      padding: 6vh 6vw 7rem;               /* bottom clearance for the flip arrows */
     }
     .centered {
       display: flex; flex-direction: column;
@@ -64,6 +70,25 @@ import { LogoNav } from '../core/logo-nav';
     }
     h2 { color: #fff; }
     h5 { color: rgba(255,255,255,0.6); margin-bottom: 1.5rem; }
+
+    .arrowswrap {
+      position: fixed; bottom: 2rem;
+      left: 50%; transform: translateX(-50%);
+      display: flex; gap: 1rem; z-index: 5;
+    }
+    .arrws {
+      width: 44px; height: 44px;
+      display: flex; align-items: center; justify-content: center;
+      border: 2px solid rgba(255,255,255,0.6);
+      border-radius: 50%;
+      font-size: 1.6rem; line-height: 1;
+      color: rgba(255,255,255,0.85);
+      cursor: pointer;
+      transition: all 200ms cubic-bezier(0.175,0.885,0.32,1.275);
+      user-select: none;
+      &:hover { background: #fff; border-color: #fff; color: #000; }
+    }
+
     .lab-card {
       max-width: 640px;
       margin: 0 auto 2.2rem;
@@ -96,4 +121,27 @@ import { LogoNav } from '../core/logo-nav';
 })
 export class ExperimentsPage {
   readonly experiments = EXPERIMENTS;
+  protected readonly idx = signal(0);
+
+  protected readonly currentCard = computed(() => {
+    const n = this.experiments.length;
+    return this.experiments[((this.idx() % n) + n) % n];
+  });
+
+  prev() {
+    const n = this.experiments.length;
+    this.idx.update((i) => (i - 1 + n) % n);
+  }
+  next() {
+    this.idx.update((i) => (i + 1) % this.experiments.length);
+  }
+
+  // Keyboard flip — arrows mirror the on-screen ‹ › controls.
+  @HostListener('document:keydown', ['$event'])
+  onKeydown(e: KeyboardEvent) {
+    const tag = (e.target as HTMLElement)?.tagName;
+    if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT') return;
+    if (e.key === 'ArrowLeft') { e.preventDefault(); this.prev(); }
+    else if (e.key === 'ArrowRight') { e.preventDefault(); this.next(); }
+  }
 }
